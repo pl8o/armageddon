@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chapter 34 — ARMAGEDDON</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARMAGEDDON — Chapter 34</title>
 
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
@@ -13,180 +13,198 @@
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
   <style>
-    body { background-color: black; margin:0; color: white; font-family: Lato, sans-serif; }
-    .shadow { color:black; font-size:10vw; margin:0; -webkit-text-stroke:2px red; text-shadow:0 0 20px white; text-align:center; }
-    .header { margin:auto; width:80%; padding:30px; position:absolute; top:5%; left:7%; }
-    .fairytale { position:absolute; top:49%; left:40%; width:auto; font-size:1.5vw; text-align:center; }
-    .image_container { display:block; text-align:center; position:relative; top:55%; transform:translateY(-5%); }
-    .flex-container { display:block; background-color:black; width:100%; margin:0 auto; text-align:center; }
-    a { text-decoration:none; color:black; -webkit-text-stroke:2px red; text-shadow:2px 2px 20px white; }
-    img { max-width:100%; height:auto; }
+    body { background-color: black; margin:0; color:#fff; font-family: Lato, sans-serif; }
+    .header { position:absolute; top:5%; left:7%; width:80%; padding:30px; }
+    .title { margin:0; font-size:10vw; color:black; -webkit-text-stroke:2px red; text-shadow:0 0 20px white; text-align:center; }
+    .fairytale { position:absolute; top:49%; left:40%; transform:translate(-10%, -50%); font-size:1.5vw; text-align:center; color:white; }
+    .image_container { text-align:center; position:relative; padding-top: 40vh; } /* keep images below the header area */
+    .flex-container { display:block; width:100%; margin:0 auto; text-align:center; }
+    /* Make all PNG slides the same displayed width; responsive fallback on small screens */
+    .slide-image { width:700px; max-width:90vw; height:auto; display:block; margin:0 auto 1.5rem; }
+    /* Trigger image specific cursor */
+    #img294 { cursor:pointer; border: 2px solid transparent; }
+    #img294.playing { border-color: #4CAF50; box-shadow: 0 0 12px rgba(76,175,80,0.5); }
+
     .footer_2, .footer_3, .footer_4 { position:fixed; bottom:0; background:transparent; text-align:center; }
     .footer_2 { left:0; width:5%; height:18%; }
     .footer_3 { right:0; width:5%; height:18%; }
     .footer_4 { left:50%; transform:translateX(-50%); width:5%; }
-    #triggerImage { width:300px; cursor:pointer; }
-    /* small status box */
-    #musicControls { position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,0.06); color: #fff; padding: 8px 10px; border-radius:6px; font-size:0.9rem; }
-    button { cursor:pointer; }
+    a { text-decoration:none; color:black; -webkit-text-stroke:2px red; text-shadow:2px 2px 20px white; }
+
+    /* Play button and status next to the 294 image */
+    .playControls { margin: 0.5rem auto 1.5rem; text-align:center; }
+    .playControls button { font-size:1rem; padding:.4rem .8rem; cursor:pointer; }
+    #musicStatus { margin-left:0.6rem; font-size:0.95rem; vertical-align:middle; color:#ddd; }
+    @media (max-width:760px) {
+      .slide-image { width:90vw; } /* smaller screens */
+      .fairytale { left:10%; top:52%; transform:none; }
+    }
   </style>
 </head>
-
 <body>
+
   <div class="header">
-    <a href="" target="_blank" aria-label="Title"><p class="shadow">ARMAGEDDON</p></a>
+    <a href="#" aria-label="Title"><p class="title">ARMAGEDDON</p></a>
   </div>
 
-  <div class="fairytale" role="region" aria-label="Chapter info">
+  <div class="fairytale" role="region" aria-label="Chapter information">
     <div>A Suburban Fairytale</div>
     <div>Chapter 34 — 'Roam' • Slides: 287–295</div>
   </div>
 
   <div class="image_container" id="readingArea">
+
     <div class="flex-container">
-      <img src="images/34_chapter/287.png" alt=""><br><br>
-      <img src="images/34_chapter/288.png" alt=""><br><br>
-      <img src="images/34_chapter/289.png" alt=""><br><br>
-      <img src="images/34_chapter/290.png" alt=""><br><br>
-      <img src="images/34_chapter/291.png" alt=""><br><br>
-      <img src="images/34_chapter/292.png" alt=""><br><br>
-      <img src="images/34_chapter/293.png" alt=""><br><br>
+      <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287">
+      <img class="slide-image" src="images/34_chapter/288.png" alt="Slide 288">
+      <img class="slide-image" src="images/34_chapter/289.png" alt="Slide 289">
+      <img class="slide-image" src="images/34_chapter/290.png" alt="Slide 290">
+      <img class="slide-image" src="images/34_chapter/291.png" alt="Slide 291">
+      <img class="slide-image" src="images/34_chapter/292.png" alt="Slide 292">
+      <img class="slide-image" src="images/34_chapter/293.png" alt="Slide 293">
 
-      <!-- trigger image: clicking/tapping will toggle music -->
-      <img id="triggerImage" src="images/34_chapter/294.png" alt="Tap to play music">
+      <!-- 294: play control is associated with this image -->
+      <img id="img294" class="slide-image" src="images/34_chapter/294.png" alt="Slide 294 (tap to toggle)">
 
-      <!-- keep an actual audio element for music -->
-      <!-- NOTE: replace ROAM.mp3 with your actual audio file (straight quotes) -->
-      <audio id="bgAudio" src="ROAM.mp3" preload="none" loop></audio>
+      <div class="playControls" aria-live="polite">
+        <button id="playBtn" type="button">Play music for this chapter</button>
+        <span id="musicStatus">Locked — click Play to allow audio</span>
+      </div>
 
-      <br><br>
-      <img src="images/34_chapter/295.png" alt=""><br><br>
+      <img class="slide-image" src="images/34_chapter/295.png" alt="Slide 295">
     </div>
   </div>
 
-  <div id="musicControls" aria-live="polite">
-    <button id="enableMusic">Enable music</button>
-    <span id="musicStatus">Locked (click Enable or tap the image)</span>
+  <div class="footer_2">
+    <a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;color:#fff">Home</span></a>
   </div>
 
-  <div class="footer_2"><a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;">Home</span></a></div>
-  <div class="footer_3"><a href="chapter_35.html" target="_blank" aria-label="Next"><span style="font-size:1.5vw;">Next</span></a></div>
-  <div class="footer_4"><a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;">Back</span></a></div>
+  <div class="footer_3">
+    <a href="chapter_35.html" target="_blank" aria-label="Next"><span style="font-size:1.5vw;color:#fff">Next</span></a>
+  </div>
+
+  <div class="footer_4">
+    <a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;color:#fff">Back</span></a>
+  </div>
+
+  <!-- Hidden video used for audio playback (ROAM.mp4). This will play audio track only. -->
+  <video id="bgPlayer" src="ROAM.mp4" preload="none" loop style="display:none;" playsinline></video>
 
   <script>
-    // Elements
-    const audio = document.getElementById('bgAudio');
-    const enableBtn = document.getElementById('enableMusic');
-    const status = document.getElementById('musicStatus');
-    const triggerImage = document.getElementById('triggerImage');
-    const readingArea = document.getElementById('readingArea');
+    (function () {
+      const playBtn = document.getElementById('playBtn');
+      const status = document.getElementById('musicStatus');
+      const img294 = document.getElementById('img294');
+      const player = document.getElementById('bgPlayer');
 
-    let unlocked = false;
-    let playing = false;
-    const dwellMs = 1500; // how long an element must stay visible to count as "reading"
-    let dwellTimer = null;
+      let unlocked = false;
+      let playing = false;
 
-    // Try to "unlock" playback using a clear user gesture (button)
-    enableBtn.addEventListener('click', async () => {
-      try {
-        await audio.play(); // will start or throw; we pause immediately to just unlock
-        audio.pause();
-        audio.currentTime = 0;
-        unlocked = true;
-        enableBtn.disabled = true;
-        status.textContent = 'Unlocked — music will play while you read';
-      } catch (err) {
-        console.warn('Unable to unlock audio via button:', err);
-        status.textContent = 'Unlock failed — try tapping the image';
-      }
-    });
-
-    // Tapping/clicking the trigger image toggles playback (also serves as unlock on first tap)
-    triggerImage.addEventListener('click', async (e) => {
-      e.preventDefault();
-      if (!unlocked) {
-        try {
-          await audio.play();
-          unlocked = true;
-          playing = true;
-          enableBtn.disabled = true;
-          status.textContent = 'Playing (unlocked by tap)';
-          return;
-        } catch (err) {
-          console.warn('Play failed on tap:', err);
-          status.textContent = 'Playback blocked — check browser settings';
-          return;
-        }
-      }
-
-      if (playing) {
-        audio.pause();
-        playing = false;
-        status.textContent = 'Paused';
-      } else {
-        try {
-          await audio.play();
-          playing = true;
+      // Helper to update UI
+      function updateUI() {
+        if (!unlocked) {
+          playBtn.textContent = 'Play music for this chapter';
+          status.textContent = 'Locked — click Play to allow audio';
+          img294.classList.remove('playing');
+        } else if (playing) {
+          playBtn.textContent = 'Pause music';
           status.textContent = 'Playing';
-        } catch (err) {
-          console.warn('Play failed:', err);
-          status.textContent = 'Playback blocked';
-        }
-      }
-    });
-
-    // IntersectionObserver to detect when readingArea is visible
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-          // start dwell timer
-          if (dwellTimer == null) {
-            dwellTimer = setTimeout(async () => {
-              dwellTimer = null;
-              if (unlocked) {
-                try {
-                  await audio.play();
-                  playing = true;
-                  status.textContent = 'Playing while you read';
-                } catch (err) {
-                  console.warn('Play failed inside observer:', err);
-                  status.textContent = 'Could not play audio — browser blocked autoplay';
-                }
-              } else {
-                // Not unlocked yet; prompt user to tap
-                status.textContent = 'Tap the image or click Enable to allow music';
-              }
-            }, dwellMs);
-          }
+          img294.classList.add('playing');
         } else {
-          // left view: cancel pending dwell timer and possibly pause
-          if (dwellTimer != null) {
-            clearTimeout(dwellTimer);
-            dwellTimer = null;
-          }
-          // if nothing visible, pause after a short delay to avoid flicker
-          setTimeout(() => {
-            // verify still not visible
-            const rect = readingArea.getBoundingClientRect();
-            const winH = window.innerHeight || document.documentElement.clientHeight;
-            const visibleHeight = Math.max(0, Math.min(rect.bottom, winH) - Math.max(rect.top, 0));
-            const visibleRatio = (rect.height > 0) ? visibleHeight / rect.height : 0;
-            if (visibleRatio < 0.5 && playing) {
-              audio.pause();
-              playing = false;
-              status.textContent = 'Paused (no reading area visible)';
-            }
-          }, 700);
+          playBtn.textContent = 'Play music for this chapter';
+          status.textContent = 'Paused';
+          img294.classList.remove('playing');
         }
       }
-    }, { threshold: [0.5] });
 
-    observer.observe(readingArea);
+      // Try to play via a user gesture (the button). This satisfies autoplay policies.
+      playBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          // If not unlocked, calling play() inside click should allow playback
+          if (!playing) {
+            await player.play();
+            unlocked = true;
+            playing = true;
+            updateUI();
+          } else {
+            player.pause();
+            playing = false;
+            updateUI();
+          }
+        } catch (err) {
+          // Play failed — show helpful message
+          console.warn('Playback failed:', err);
+          unlocked = false;
+          playing = false;
+          status.textContent = 'Playback blocked — try clicking the image or check browser settings';
+        }
+      });
 
-    // Clean up on page unload
-    window.addEventListener('pagehide', () => {
-      if (!audio.paused) audio.pause();
-    });
+      // Allow clicking the 294 image to toggle playback once unlocked (or to attempt unlock)
+      img294.addEventListener('click', async (ev) => {
+        ev.preventDefault();
+        try {
+          if (!playing) {
+            await player.play();
+            unlocked = true;
+            playing = true;
+            updateUI();
+          } else {
+            player.pause();
+            playing = false;
+            updateUI();
+          }
+        } catch (err) {
+          console.warn('Playback failed on image click:', err);
+          status.textContent = 'Playback blocked — use the Play button or check settings';
+        }
+      });
+
+      // Keep UI in sync with player events
+      player.addEventListener('play', () => {
+        unlocked = true;
+        playing = true;
+        updateUI();
+      });
+      player.addEventListener('pause', () => {
+        playing = false;
+        updateUI();
+      });
+      player.addEventListener('ended', () => {
+        playing = false;
+        updateUI();
+      });
+      player.addEventListener('error', (e) => {
+        console.error('Media error', player.error, e);
+        status.textContent = 'Media error: check ROAM.mp4 path / codec';
+      });
+
+      // Optional: unlock on any first user gesture across the document (unobtrusive)
+      // This will attempt a silent unlock (play/pause) the first time the user interacts anywhere.
+      function oneTimeUnlock() {
+        window.removeEventListener('pointerdown', oneTimeUnlock, {passive:true});
+        // try a fast play/pause to register the gesture (may fail silently)
+        player.play().then(() => {
+          player.pause();
+          player.currentTime = 0;
+          unlocked = true;
+          updateUI();
+        }).catch(() => {
+          // ignore; user can still use the explicit Play button
+        });
+      }
+      window.addEventListener('pointerdown', oneTimeUnlock, {passive:true});
+
+      // initialize UI
+      updateUI();
+
+      // Accessibility: stop playback when navigating away
+      window.addEventListener('pagehide', () => {
+        if (!player.paused) player.pause();
+      });
+    })();
   </script>
+
 </body>
 </html>
