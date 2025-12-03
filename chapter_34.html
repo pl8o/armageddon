@@ -189,7 +189,28 @@ img{
 <img src="images/34_chapter/291.png" alt=""><br><br>
 <img src="images/34_chapter/292.png" alt=""><br><br>
 <img src="images/34_chapter/293.png" alt=""><br><br>
-<img src="images/34_chapter/294.png" alt=""><br><br>
+
+<img id="triggerImage" src="images/34_chapter/294.png" alt="Click to play music" style="width:300px;cursor:pointer;">
+  <video id="audioVideo" src=“ROAM.mp4" style="display:none;"></video>
+
+  <script>
+    const triggerImage = document.getElementById('triggerImage');
+    const audioVideo = document.getElementById('audioVideo');
+    
+    triggerImage.addEventListener('mouseenter', function() {
+      audioVideo.play();
+    });
+
+    triggerImage.addEventListener('mouseleave', function() {
+      audioVideo.pause();
+      audioVideo.currentTime = 0;
+    });
+
+    // Optional: Prevent video controls from showing
+    audioVideo.controls = false;
+  </script>
+
+
 <img src="images/34_chapter/295.png" alt=""><br><br>
 
 
