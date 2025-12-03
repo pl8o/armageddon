@@ -2,28 +2,14 @@
 <html lang="en">
 <head>
   <!--
-    index_fixed_header.html
-    Purpose:
-    - Restore your original ARMAGEDDON heading shading/outline exactly as you had it.
-    - Ensure the "A Suburban Fairytale / Chapter 34 / Slides" block appears underneath the title (not overlapping).
-    - Keep the uniform slide sizing and Play control behavior you liked.
-    - Add comments so you can follow the structure and styling choices.
-
-    Notes:
-    - I preserved the "original shading" by using the same color, stroke, and shadow effects,
-      but combined the two text-shadow values into a single declaration so both shadows apply.
-    - To avoid overlapping, the header and fairytale are now in normal document flow
-      (no absolute positioning that caused overlap). Images are pushed down with
-      padding-top on the image container so the layout keeps the visual spacing you expect.
-    - If you'd rather keep absolute positioning for some reason, tell me and I can
-      rework with explicit z-index and top values — but using normal flow is simpler and
-      more robust across screen sizes.
+    index_responsive_desktop.html
+    Purpose: scale slide images and heading proportionally on laptop/desktop while
+             keeping mobile layout intact. Preserves Play control and ROAM.mp4 behavior.
   -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARMAGEDDON — Chapter 34</title>
 
-  <!-- Favicons & fonts (same as your original) -->
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -40,64 +26,47 @@
       font-family: Lato, sans-serif;
     }
 
-    /* ---------------------------
-       TITLE (ARMAGEDDON)
-       - Restored original shading behavior:
-         * black fill (color:black)
-         * red outline via -webkit-text-stroke
-         * two shadows (one subtle offset dark shadow + one white glow)
-       - Using multiple shadows (comma-separated) preserves both effects.
-       --------------------------- */
+    /* TITLE (ARMAGEDDON)
+       - Uses clamp() so font-size scales from a minimum up to a sensible maximum on large screens
+       - Maintains original fill/stroke/shadow appearance
+    */
     .shadow {
       text-decoration: none;
-      color: black; /* original fill color preserved */
-      -webkit-text-stroke: 2px red; /* red outline (original) */
-
-      /* combine the two original text-shadow declarations so both apply */
-      text-shadow: 4px 4px 4px #000000, 0 0 20px white;
-
-      font-size: 10vw; /* large responsive size (as original) */
+      color: black; /* original fill color */
+      -webkit-text-stroke: 2px red; /* red outline */
+      text-shadow: 4px 4px 4px #000000, 0 0 20px white; /* original dual shadow */
+      font-size: clamp(48px, 10vw, 140px); /* responsive scaling */
       font-family: Lato, sans-serif;
       margin: 0;
       text-align: center;
-      line-height: 1; /* keep tight */
+      line-height: 1;
       display: inline-block;
-      /* since the fill is black, the white glow ensures readability on black background */
     }
 
-    /* Header wrapper now in normal flow and centered.
-       This prevents overlapping with elements below. */
+    /* Header in normal flow, centered */
     .header {
       width: 100%;
-      padding: 30px 0 6px; /* top padding to ensure spacing from top of page */
+      padding: 36px 0 6px;
       text-align: center;
       box-sizing: border-box;
-      /* keep it in-flow so following content naturally sits below it */
     }
 
-    /* ---------------------------
-       FAIRYTALE block (chapter details)
-       - Placed directly under the title (normal flow)
-       - Uses same text content and sizing you requested
-       - pointer-events default (so it's not blocking interaction)
-       --------------------------- */
+    /* FAIRYTALE (chapter info) directly under the title */
     .fairytale {
-      margin: 0 auto 8px; /* spacing below title, above images */
+      margin: 0 auto 8px;
       width: auto;
-      font-size: 1.5vw;   /* same scaling as you used previously */
+      font-size: clamp(14px, 1.5vw, 20px); /* scale text on wide screens */
       color: white;
       text-align: center;
       padding: 0 1rem;
     }
 
-    /* Container for the slides:
-       - Push the images down sufficiently so they don't overlap with the header/fairytale.
-       - Adjust padding-top if you change title size.
-    */
+    /* IMAGE AREA: adjust vertical spacing to keep header and fairytale clear */
     .image_container {
       display: block;
       text-align: center;
-      padding-top: 36vh; /* moves images down so header + fairytale have room */
+      /* default mobile spacing (more push) */
+      padding-top: 48vh;
       box-sizing: border-box;
     }
 
@@ -108,70 +77,72 @@
       text-align: center;
     }
 
-    /* Uniform slide sizing: all PNG slides show the same displayed width */
+    /* SLIDE SIZING:
+       - width uses clamp(min, preferred, max) so it grows smoothly from mobile to desktop
+       - height:auto preserves aspect ratio (proportional height)
+    */
     .slide-image {
-      width: 700px;      /* change this to the displayed pixel width you want */
-      max-width: 90vw;   /* responsive cap on small screens */
+      width: clamp(360px, 75vw, 1200px); /* min 360px, up to 1200px on large screens */
       height: auto;
       display: block;
       margin: 0 auto 1.5rem;
     }
 
-    /* Visual state for the 294 image when music is playing */
+    /* 294 image visual state */
     #img294 { cursor: pointer; border: 2px solid transparent; transition: box-shadow .2s, border-color .2s; }
     #img294.playing { border-color: #4CAF50; box-shadow: 0 0 12px rgba(76,175,80,0.5); }
 
-    /* Play button area below image 294 (kept where you liked it) */
+    /* Play control below the 294 image (kept where you liked it) */
     .playControls { margin: 0.5rem auto 1.5rem; text-align: center; }
     .playControls button { font-size: 1rem; padding: .4rem .8rem; cursor: pointer; }
     #musicStatus { margin-left: .6rem; color: #ddd; vertical-align: middle; }
 
-    /* Footer anchors (as in your original file) */
+    /* Footer anchors */
     .footer_2, .footer_3, .footer_4 { position: fixed; bottom: 0; background-color: transparent; text-align: center; }
     .footer_2 { left: 0; width: 5%; height: 18%; }
     .footer_3 { right: 0; width: 5%; height: 18%; }
     .footer_4 { left: 50%; transform: translateX(-50%); width: 5%; }
 
-    /* Responsive tweaks */
-    @media (max-width: 760px) {
-      .slide-image { width: 90vw; }
-      .fairytale { font-size: 3.6vw; }
-      .image_container { padding-top: 48vh; } /* give more vertical room on small screens */
+    /* MEDIUM SCREENS (tablets / small laptops)
+       - Reduce top padding so images move upward (more room for larger title)
+       - Increase max width a bit by adjusting the clamp's middle (handled by clamp already)
+    */
+    @media (min-width: 768px) {
+      .image_container { padding-top: 36vh; }
+      .fairytale { font-size: clamp(15px, 1.2vw, 20px); }
     }
+
+    /* LARGE SCREENS (desktop / large laptops)
+       - Make top padding even smaller so slides sit higher under the heading
+       - clamp for .slide-image allows growth up to 1200px
+    */
+    @media (min-width: 1200px) {
+      .image_container { padding-top: 22vh; }
+    }
+
+    /* Optionally, if you want an explicit maximum width on the page content: */
+    .flex-container { max-width: 1400px; margin-left: auto; margin-right: auto; }
   </style>
 </head>
 <body>
 
-  <!--
-    HEADER: ARMAGEDDON
-    - kept your original markup and restored original shading
-    - header is in normal flow (centered), so the fairytale lines will appear underneath naturally
-  -->
+  <!-- Header/title in normal flow -->
   <div class="header">
     <a href="" target="_blank" aria-label="ARMAGEDDON title">
-      <p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p>
+      <p class="shadow"><span style="font-size:inherit;">ARMAGEDDON</span></p>
     </a>
   </div>
 
-  <!--
-    FAIRYTALE block: appears underneath the ARMAGEDDON title (normal document flow)
-    - three <p> lines as you requested
-    - you can tweak spacing by changing .fairytale margin or .image_container padding-top
-  -->
+  <!-- Chapter info under title -->
   <div class="fairytale" role="region" aria-label="Chapter information">
-    <p><span style="font-size:1.5vw;">A Suburban Fairytale</span></p>
-    <p><span style="font-size:1.5vw;">Chapter 34 &nbsp; 'Roam'</span></p>
-    <p><span style="font-size:1.5vw;">Slides: 287 - 295</span></p>
+    <p><span style="font-size:inherit;">A Suburban Fairytale</span></p>
+    <p><span style="font-size:inherit;">Chapter 34 &nbsp; 'Roam'</span></p>
+    <p><span style="font-size:inherit;">Slides: 287 - 295</span></p>
   </div>
 
-  <!--
-    IMAGE AREA: slides follow below. All slides use .slide-image for consistent display sizes.
-    Adjust .image_container padding-top if you change the title size or want different spacing.
-  -->
+  <!-- Slides container (images scale proportionally) -->
   <div class="image_container">
     <div class="flex-container">
-
-      <!-- Slides 287–293 -->
       <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287"><br>
       <img class="slide-image" src="images/34_chapter/288.png" alt="Slide 288"><br>
       <img class="slide-image" src="images/34_chapter/289.png" alt="Slide 289"><br>
@@ -180,48 +151,29 @@
       <img class="slide-image" src="images/34_chapter/292.png" alt="Slide 292"><br>
       <img class="slide-image" src="images/34_chapter/293.png" alt="Slide 293"><br>
 
-      <!-- Slide 294: toggles playback; visual state indicated by .playing class -->
+      <!-- Slide 294: toggles playback -->
       <img id="img294" class="slide-image" src="images/34_chapter/294.png" alt="Slide 294 (tap to toggle)"><br>
 
-      <!-- Play control: button supplies the required user gesture to allow playback of ROAM.mp4 -->
+      <!-- Play control -->
       <div class="playControls" aria-live="polite">
         <button id="playBtn" type="button">Play music for this chapter</button>
         <span id="musicStatus">Locked — click Play to allow audio</span>
       </div>
 
-      <!-- Slide 295 -->
       <img class="slide-image" src="images/34_chapter/295.png" alt="Slide 295"><br>
     </div>
   </div>
 
-  <!-- Footer navigation as in your original file -->
-  <div class="footer_2">
-    <a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;color:#fff">Home</span></a>
-  </div>
+  <!-- Footer nav -->
+  <div class="footer_2"><a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;color:#fff">Home</span></a></div>
+  <div class="footer_3"><a href="chapter_35.html" target="_blank" aria-label="Next"><span style="font-size:1.5vw;color:#fff">Next</span></a></div>
+  <div class="footer_4"><a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;color:#fff">Back</span></a></div>
 
-  <div class="footer_3">
-    <a href="chapter_35.html" target="_blank" aria-label="Next"><span style="font-size:1.5vw;color:#fff">Next</span></a>
-  </div>
-
-  <div class="footer_4">
-    <a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;color:#fff">Back</span></a>
-  </div>
-
-  <!--
-    Hidden media element used for audio playback of ROAM.mp4.
-    Keep ROAM.mp4 in the same folder or change the src accordingly.
-    playsinline helps mobile browsers avoid fullscreen.
-  -->
+  <!-- Hidden media for playback -->
   <video id="bgPlayer" src="ROAM.mp4" preload="none" loop style="display:none;" playsinline></video>
 
   <script>
-    /*
-      JavaScript logic (kept simple and commented):
-      - Clicking the Play button is a user gesture that calls player.play() to unlock playback.
-      - Once unlocked, clicking the 294 image will toggle play/pause as well.
-      - play() is awaited and errors are handled; helpful messages are shown in #musicStatus.
-    */
-
+    // Play/unlock logic unchanged
     (function () {
       const playBtn = document.getElementById('playBtn');
       const status = document.getElementById('musicStatus');
@@ -231,7 +183,6 @@
       let unlocked = false;
       let playing = false;
 
-      // Update UI text and visual state
       function updateUI() {
         if (!unlocked) {
           playBtn.textContent = 'Play music for this chapter';
@@ -248,7 +199,6 @@
         }
       }
 
-      // Play button: provides required user gesture
       playBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         try {
@@ -270,7 +220,6 @@
         }
       });
 
-      // Image 294 toggles playback and can act as unlock gesture if needed
       img294.addEventListener('click', async (ev) => {
         ev.preventDefault();
         try {
@@ -290,7 +239,6 @@
         }
       });
 
-      // Sync UI to player events
       player.addEventListener('play', () => { unlocked = true; playing = true; updateUI(); });
       player.addEventListener('pause', () => { playing = false; updateUI(); });
       player.addEventListener('ended', () => { playing = false; updateUI(); });
@@ -299,7 +247,7 @@
         status.textContent = 'Media error: check ROAM.mp4 path and codec';
       });
 
-      // Optional unobtrusive one-time unlock on first pointerdown anywhere
+      // One-time unobtrusive unlock on first pointerdown
       function oneTimeUnlock() {
         window.removeEventListener('pointerdown', oneTimeUnlock, {passive:true});
         player.play().then(() => {
@@ -307,14 +255,11 @@
           player.currentTime = 0;
           unlocked = true;
           updateUI();
-        }).catch(()=>{ /* ignore - fallback is the explicit Play button */ });
+        }).catch(()=>{});
       }
       window.addEventListener('pointerdown', oneTimeUnlock, {passive:true});
 
-      // Pause when leaving page
       window.addEventListener('pagehide', () => { if (!player.paused) player.pause(); });
-
-      // init UI
       updateUI();
     })();
   </script>
