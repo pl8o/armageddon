@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,15 +57,17 @@
        Key change: controlled margin-bottom to control gap to the slides.
        Use clamp() so gap is roughly 1rem on small screens up to ~4rem on large screens.
     */
-    .fairytale {
-      margin: 0 auto;
-      margin-bottom: clamp(1rem, 4vw, 4rem); /* ~4 lines on large screens, small gap on mobile */
-      width: auto;
-      font-size: clamp(14px, 1.5vw, 20px);
-      color: white;
-      text-align: center;
-      padding: 0 1rem;
-    }
+
+   .fairytale {
+  /* doubled from clamp(14px, 1.5vw, 20px) to clamp(28px, 3vw, 40px) */
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0 auto;
+  margin-bottom: clamp(1rem, 4vw, 4rem);
+  width: auto;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+}
 
     /* IMAGE AREA: reduced top padding so slides sit directly below the chapter info */
     .image_container {
@@ -255,3 +258,4 @@
   </script>
 </body>
 </html>
+
