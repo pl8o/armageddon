@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
   <!--
-    index_with_comments.html
-    - Restores visible header and "fairytale" details
-    - Ensures the title and chapter info are readable and not hidden by layout/colour issues
-    - Comments throughout explain why each rule/section exists
+    index_fixed_header.html
+    Purpose:
+    - Restore your original ARMAGEDDON heading shading/outline exactly as you had it.
+    - Ensure the "A Suburban Fairytale / Chapter 34 / Slides" block appears underneath the title (not overlapping).
+    - Keep the uniform slide sizing and Play control behavior you liked.
+    - Add comments so you can follow the structure and styling choices.
+
+    Notes:
+    - I preserved the "original shading" by using the same color, stroke, and shadow effects,
+      but combined the two text-shadow values into a single declaration so both shadows apply.
+    - To avoid overlapping, the header and fairytale are now in normal document flow
+      (no absolute positioning that caused overlap). Images are pushed down with
+      padding-top on the image container so the layout keeps the visual spacing you expect.
+    - If you'd rather keep absolute positioning for some reason, tell me and I can
+      rework with explicit z-index and top values — but using normal flow is simpler and
+      more robust across screen sizes.
   -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARMAGEDDON — Chapter 34</title>
 
-  <!-- Fonts and favicons (same as original) -->
+  <!-- Favicons & fonts (same as your original) -->
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -20,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
   <style>
-    /* Page base */
+    /* Base page */
     body {
       background-color: black;
       margin: 0;
@@ -28,72 +40,67 @@
       font-family: Lato, sans-serif;
     }
 
-    /* --------------------------
-       TITLE: recreate your original "shadow" appearance
-       - IMPORTANT FIX: set color to white so text is readable on a black background.
-       - Keep webkit-text-stroke (red) and text-shadow (white glow) similar to original design.
-       -------------------------- */
+    /* ---------------------------
+       TITLE (ARMAGEDDON)
+       - Restored original shading behavior:
+         * black fill (color:black)
+         * red outline via -webkit-text-stroke
+         * two shadows (one subtle offset dark shadow + one white glow)
+       - Using multiple shadows (comma-separated) preserves both effects.
+       --------------------------- */
     .shadow {
       text-decoration: none;
-      color: white;                    /* was black - that made it invisible on black background */
-      -webkit-text-stroke: 2px red;    /* red outline preserved */
-      text-shadow: 0 0 20px white;     /* white glow preserved */
-      font-size: 10vw;                 /* responsive large title */
+      color: black; /* original fill color preserved */
+      -webkit-text-stroke: 2px red; /* red outline (original) */
+
+      /* combine the two original text-shadow declarations so both apply */
+      text-shadow: 4px 4px 4px #000000, 0 0 20px white;
+
+      font-size: 10vw; /* large responsive size (as original) */
       font-family: Lato, sans-serif;
       margin: 0;
       text-align: center;
+      line-height: 1; /* keep tight */
+      display: inline-block;
+      /* since the fill is black, the white glow ensures readability on black background */
     }
 
-    /* --------------------------
-       HEADER placement
-       - retain absolute placement like your original
-       - add z-index so header sits above other content (prevents accidental overlap)
-       -------------------------- */
+    /* Header wrapper now in normal flow and centered.
+       This prevents overlapping with elements below. */
     .header {
-      margin: auto;
-      width: 80%;
-      padding: 30px;
-      position: absolute;
-      top: 5%;
-      left: 7%;
-      z-index: 30;                     /* ensure header is above images/content */
+      width: 100%;
+      padding: 30px 0 6px; /* top padding to ensure spacing from top of page */
+      text-align: center;
+      box-sizing: border-box;
+      /* keep it in-flow so following content naturally sits below it */
     }
 
-    /* --------------------------
-       FAIRYTALE (chapter details)
-       - Keep the text content and size like your original, but:
-         * center it horizontally more reliably across screen sizes
-         * use a higher z-index to avoid being hidden
-         * place it below header (top value tuned)
-       - Note: using left:50% + transform:translateX(-50%) is more robust than left:40%
-       -------------------------- */
+    /* ---------------------------
+       FAIRYTALE block (chapter details)
+       - Placed directly under the title (normal flow)
+       - Uses same text content and sizing you requested
+       - pointer-events default (so it's not blocking interaction)
+       --------------------------- */
     .fairytale {
-      display: block;
-      position: absolute;
-      top: 18%;                        /* moved up so it sits closer to header and is reliably visible */
-      left: 50%;
-      transform: translateX(-50%);     /* center the block horizontally */
+      margin: 0 auto 8px; /* spacing below title, above images */
       width: auto;
-      font-size: 1.5vw;                /* similar to your original */
+      font-size: 1.5vw;   /* same scaling as you used previously */
       color: white;
       text-align: center;
-      margin: auto;
-      z-index: 25;                      /* make sure it's above main content */
-      pointer-events: none;             /* keeps it non-interactive so clicks pass to images if necessary */
+      padding: 0 1rem;
     }
 
-    /* pointer-events: none is optional; remove if you want the fairytale block to be clickable */
-
-    /* --------------------------
-       Slides and image container
-       - minimal changes: slides are placed below header+fairytale
-       - keep padding-top to push images out from under header (tweak if you change header size)
-       -------------------------- */
+    /* Container for the slides:
+       - Push the images down sufficiently so they don't overlap with the header/fairytale.
+       - Adjust padding-top if you change title size.
+    */
     .image_container {
       display: block;
       text-align: center;
-      padding-top: 45vh;               /* push slides below header + fairytale; adjust if needed */
+      padding-top: 36vh; /* moves images down so header + fairytale have room */
+      box-sizing: border-box;
     }
+
     .flex-container {
       display: block;
       width: 100%;
@@ -101,48 +108,44 @@
       text-align: center;
     }
 
-    /* Make all slides consistent size (adjust width as desired) */
+    /* Uniform slide sizing: all PNG slides show the same displayed width */
     .slide-image {
-      width: 700px;
-      max-width: 90vw;
+      width: 700px;      /* change this to the displayed pixel width you want */
+      max-width: 90vw;   /* responsive cap on small screens */
       height: auto;
       display: block;
       margin: 0 auto 1.5rem;
     }
 
-    /* specific 294 image styling (visual 'playing' state support) */
-    #img294 { cursor: pointer; border: 2px solid transparent; }
+    /* Visual state for the 294 image when music is playing */
+    #img294 { cursor: pointer; border: 2px solid transparent; transition: box-shadow .2s, border-color .2s; }
     #img294.playing { border-color: #4CAF50; box-shadow: 0 0 12px rgba(76,175,80,0.5); }
 
-    /* play controls (keeps the button below slide 294 as you like) */
+    /* Play button area below image 294 (kept where you liked it) */
     .playControls { margin: 0.5rem auto 1.5rem; text-align: center; }
-    .playControls button { font-size: 1rem; padding: .4rem .8rem; cursor:pointer; }
-    #musicStatus { margin-left: .6rem; color: #ddd; }
+    .playControls button { font-size: 1rem; padding: .4rem .8rem; cursor: pointer; }
+    #musicStatus { margin-left: .6rem; color: #ddd; vertical-align: middle; }
 
-    /* Footer nav (same as original rules) */
-    .footer_2, .footer_3, .footer_4 {
-      position: fixed;
-      bottom: 0;
-      background-color: transparent;
-      text-align: center;
-    }
+    /* Footer anchors (as in your original file) */
+    .footer_2, .footer_3, .footer_4 { position: fixed; bottom: 0; background-color: transparent; text-align: center; }
     .footer_2 { left: 0; width: 5%; height: 18%; }
     .footer_3 { right: 0; width: 5%; height: 18%; }
     .footer_4 { left: 50%; transform: translateX(-50%); width: 5%; }
 
-    /* Small-screen adjustments */
+    /* Responsive tweaks */
     @media (max-width: 760px) {
       .slide-image { width: 90vw; }
-      .fairytale { top: 22%; left: 50%; transform: translateX(-50%); font-size: 3.6vw; } /* slightly larger relative text on small screens */
-      .header { top: 4%; left: 5%; }
+      .fairytale { font-size: 3.6vw; }
+      .image_container { padding-top: 48vh; } /* give more vertical room on small screens */
     }
   </style>
 </head>
 <body>
 
   <!--
-    Header block (kept the original markup you provided).
-    NOTE: changed <a> alt to aria-label above for correctness; alt is not valid on <a>.
+    HEADER: ARMAGEDDON
+    - kept your original markup and restored original shading
+    - header is in normal flow (centered), so the fairytale lines will appear underneath naturally
   -->
   <div class="header">
     <a href="" target="_blank" aria-label="ARMAGEDDON title">
@@ -151,12 +154,9 @@
   </div>
 
   <!--
-    Fairytale / Chapter information (your original content).
-    I kept this block identical to the snippet you pasted, but corrected nesting in earlier versions.
-    This should now be visible because:
-      - .fairytale has color:white
-      - element is horizontally centered and located below the header
-      - z-index ensures it's not obscured by images
+    FAIRYTALE block: appears underneath the ARMAGEDDON title (normal document flow)
+    - three <p> lines as you requested
+    - you can tweak spacing by changing .fairytale margin or .image_container padding-top
   -->
   <div class="fairytale" role="region" aria-label="Chapter information">
     <p><span style="font-size:1.5vw;">A Suburban Fairytale</span></p>
@@ -165,10 +165,13 @@
   </div>
 
   <!--
-    Image area: slides follow below. All slides use the .slide-image class for uniform sizing.
+    IMAGE AREA: slides follow below. All slides use .slide-image for consistent display sizes.
+    Adjust .image_container padding-top if you change the title size or want different spacing.
   -->
   <div class="image_container">
     <div class="flex-container">
+
+      <!-- Slides 287–293 -->
       <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287"><br>
       <img class="slide-image" src="images/34_chapter/288.png" alt="Slide 288"><br>
       <img class="slide-image" src="images/34_chapter/289.png" alt="Slide 289"><br>
@@ -176,19 +179,22 @@
       <img class="slide-image" src="images/34_chapter/291.png" alt="Slide 291"><br>
       <img class="slide-image" src="images/34_chapter/292.png" alt="Slide 292"><br>
       <img class="slide-image" src="images/34_chapter/293.png" alt="Slide 293"><br>
+
+      <!-- Slide 294: toggles playback; visual state indicated by .playing class -->
       <img id="img294" class="slide-image" src="images/34_chapter/294.png" alt="Slide 294 (tap to toggle)"><br>
 
-      <!-- Play control kept below the 294 image -->
+      <!-- Play control: button supplies the required user gesture to allow playback of ROAM.mp4 -->
       <div class="playControls" aria-live="polite">
         <button id="playBtn" type="button">Play music for this chapter</button>
         <span id="musicStatus">Locked — click Play to allow audio</span>
       </div>
 
+      <!-- Slide 295 -->
       <img class="slide-image" src="images/34_chapter/295.png" alt="Slide 295"><br>
     </div>
   </div>
 
-  <!-- Footer anchors (preserved) -->
+  <!-- Footer navigation as in your original file -->
   <div class="footer_2">
     <a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;color:#fff">Home</span></a>
   </div>
@@ -201,15 +207,21 @@
     <a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;color:#fff">Back</span></a>
   </div>
 
-  <!-- Hidden media (keeps previous behavior) -->
+  <!--
+    Hidden media element used for audio playback of ROAM.mp4.
+    Keep ROAM.mp4 in the same folder or change the src accordingly.
+    playsinline helps mobile browsers avoid fullscreen.
+  -->
   <video id="bgPlayer" src="ROAM.mp4" preload="none" loop style="display:none;" playsinline></video>
 
   <script>
-    /* JavaScript unchanged from earlier working version
-       - click Play button to unlock/play ROAM.mp4
-       - click 294 image toggles play/pause
-       Comments are intentionally kept in the HTML and JS in previous file versions.
+    /*
+      JavaScript logic (kept simple and commented):
+      - Clicking the Play button is a user gesture that calls player.play() to unlock playback.
+      - Once unlocked, clicking the 294 image will toggle play/pause as well.
+      - play() is awaited and errors are handled; helpful messages are shown in #musicStatus.
     */
+
     (function () {
       const playBtn = document.getElementById('playBtn');
       const status = document.getElementById('musicStatus');
@@ -219,6 +231,7 @@
       let unlocked = false;
       let playing = false;
 
+      // Update UI text and visual state
       function updateUI() {
         if (!unlocked) {
           playBtn.textContent = 'Play music for this chapter';
@@ -235,6 +248,7 @@
         }
       }
 
+      // Play button: provides required user gesture
       playBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         try {
@@ -252,10 +266,11 @@
           console.warn('Playback failed:', err);
           unlocked = false;
           playing = false;
-          status.textContent = 'Playback blocked — check file path / codec';
+          status.textContent = 'Playback blocked — check ROAM.mp4 path / codec';
         }
       });
 
+      // Image 294 toggles playback and can act as unlock gesture if needed
       img294.addEventListener('click', async (ev) => {
         ev.preventDefault();
         try {
@@ -275,6 +290,7 @@
         }
       });
 
+      // Sync UI to player events
       player.addEventListener('play', () => { unlocked = true; playing = true; updateUI(); });
       player.addEventListener('pause', () => { playing = false; updateUI(); });
       player.addEventListener('ended', () => { playing = false; updateUI(); });
@@ -283,7 +299,7 @@
         status.textContent = 'Media error: check ROAM.mp4 path and codec';
       });
 
-      // Optional unobtrusive unlock attempt on first pointerdown
+      // Optional unobtrusive one-time unlock on first pointerdown anywhere
       function oneTimeUnlock() {
         window.removeEventListener('pointerdown', oneTimeUnlock, {passive:true});
         player.play().then(() => {
@@ -291,12 +307,14 @@
           player.currentTime = 0;
           unlocked = true;
           updateUI();
-        }).catch(()=>{});
+        }).catch(()=>{ /* ignore - fallback is the explicit Play button */ });
       }
       window.addEventListener('pointerdown', oneTimeUnlock, {passive:true});
 
+      // Pause when leaving page
       window.addEventListener('pagehide', () => { if (!player.paused) player.pause(); });
 
+      // init UI
       updateUI();
     })();
   </script>
