@@ -1,241 +1,192 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapter 34 — ARMAGEDDON</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-<style>
-body{
-  background-color: black;
-}
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
-.shadow {
-  text-decoration: none;
-  color:black;
-  text-shadow: 4px 4px 4px #000000;
-  font-size:10vw;
-  font-family: Lato, sans-serif;
-    margin: 0;
-    -webkit-text-stroke: 2px red;
-  text-shadow: 0 0 20px white;
-  text-align: center;
-}
-
-.header{
-  margin: auto;
-  width: 80%;
-  border-top: 1px solid black;
-  padding: 30px;
-  position:absolute;
-  top:5%;
-  left:7%
-
-}
-
-.fairytale> div {
-    background-color: black;
-    width: auto;
-    margin: auto;
-
-    text-align: center;
-    line-height: 75px;
-
-    position: relative;
-    font-family: Lato, sans-serif;
-
-}
-
-
-
-.fairytale{
-  display: block;
-  flex-wrap: nowrap;
-  background-color: black;
-  position:absolute;
-  top: 49%;
-  left:40%;
-    width: auto;
-  font-size: 20px;
-  font-family: Lato, sans-serif;
-  color:white;
-  text-align: center;
-border-top: 0;
-margin: auto;
-font-size:1.5vw;
-}
-
-
-.flex-container> div {
-    background-color: black;
-    width: 600px;
-    margin: 0px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 20px;
-    position: relative;
-    font-family: Lato, sans-serif;
-    display: block;
-    flex-wrap: nowrap;
-}
-.flex-container {
-  display: block;
-  flex-wrap: nowrap;
-  background-color: black;
-  position:absolute;
-  top: 75%;
-
-  width: 100%;
-  border-top: 0;
-
-}
-
-a{
-  text-decoration: none;
-  color:black;
-  text-shadow: 4px 4px 4px #000000;
-  font-size:3vw;
-  font-family: Lato, sans-serif;
-    margin: 0;
-    -webkit-text-stroke: 2px red;
-  text-shadow: 2px 2px 20px white;
-  text-align: center;
-}
-
-a:hover {
-  color: yellow;
-  background-color: transparent;
-
-}
-img{
-  width: auto ;
- max-width: 100% ;
- height: auto ;
-
-}
-.image_container{
-  display: block;
-  flex-wrap: nowrap;
- text-align: center;
-
-}
-.footer_2 {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 5%;
-   height:18%;
-   background-color: transparent;
-   text-decoration: none;
-   text-align: center;
-
-}
-.footer_3 {
-   position: fixed;
-   right: 0;
-   bottom: 0;
-   width: 5%;
-   height:18%;
-   background-color: transparent;
-   text-decoration: none;
-   text-align: center;
-
-}
-
-.footer_4 {
-    position: fixed;
-    margin-left: 50%;
-    margin-right: 50%;
-    width: 5%;
-    bottom: 0;
-    background-color: transparent;
-    text-align: center;
-}
-
-
-</style>
+  <style>
+    body { background-color: black; margin:0; color: white; font-family: Lato, sans-serif; }
+    .shadow { color:black; font-size:10vw; margin:0; -webkit-text-stroke:2px red; text-shadow:0 0 20px white; text-align:center; }
+    .header { margin:auto; width:80%; padding:30px; position:absolute; top:5%; left:7%; }
+    .fairytale { position:absolute; top:49%; left:40%; width:auto; font-size:1.5vw; text-align:center; }
+    .image_container { display:block; text-align:center; position:relative; top:55%; transform:translateY(-5%); }
+    .flex-container { display:block; background-color:black; width:100%; margin:0 auto; text-align:center; }
+    a { text-decoration:none; color:black; -webkit-text-stroke:2px red; text-shadow:2px 2px 20px white; }
+    img { max-width:100%; height:auto; }
+    .footer_2, .footer_3, .footer_4 { position:fixed; bottom:0; background:transparent; text-align:center; }
+    .footer_2 { left:0; width:5%; height:18%; }
+    .footer_3 { right:0; width:5%; height:18%; }
+    .footer_4 { left:50%; transform:translateX(-50%); width:5%; }
+    #triggerImage { width:300px; cursor:pointer; }
+    /* small status box */
+    #musicControls { position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,0.06); color: #fff; padding: 8px 10px; border-radius:6px; font-size:0.9rem; }
+    button { cursor:pointer; }
+  </style>
 </head>
 
 <body>
-<div class= "header">
-<a href="" target="_blank" alt="" ><p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p></a>
-</div>
+  <div class="header">
+    <a href="" target="_blank" aria-label="Title"><p class="shadow">ARMAGEDDON</p></a>
+  </div>
 
-<div class="fairytale">
-  <p><span style="font-size:1.5vw;">
-    A Suburban Fairytale
-  </span></p>
-  <p><span style="font-size:1.5vw;">
-   Chapter 34     'Roam'           
-      <p>  Slides:  287-295    </p> 
-    </span></p>
+  <div class="fairytale" role="region" aria-label="Chapter info">
+    <div>A Suburban Fairytale</div>
+    <div>Chapter 34 — 'Roam' • Slides: 287–295</div>
+  </div>
 
-</div>
+  <div class="image_container" id="readingArea">
+    <div class="flex-container">
+      <img src="images/34_chapter/287.png" alt=""><br><br>
+      <img src="images/34_chapter/288.png" alt=""><br><br>
+      <img src="images/34_chapter/289.png" alt=""><br><br>
+      <img src="images/34_chapter/290.png" alt=""><br><br>
+      <img src="images/34_chapter/291.png" alt=""><br><br>
+      <img src="images/34_chapter/292.png" alt=""><br><br>
+      <img src="images/34_chapter/293.png" alt=""><br><br>
 
+      <!-- trigger image: clicking/tapping will toggle music -->
+      <img id="triggerImage" src="images/34_chapter/294.png" alt="Tap to play music">
 
-<div class="image_container"><br>
+      <!-- keep an actual audio element for music -->
+      <!-- NOTE: replace ROAM.mp3 with your actual audio file (straight quotes) -->
+      <audio id="bgAudio" src="ROAM.mp3" preload="none" loop></audio>
 
-<div class="flex-container">
+      <br><br>
+      <img src="images/34_chapter/295.png" alt=""><br><br>
+    </div>
+  </div>
 
-<img src="images/34_chapter/287.png" alt=""><br><br>
-<img src="images/34_chapter/288.png" alt=""><br><br>
-<img src="images/34_chapter/289.png" alt=""><br><br>
-<img src="images/34_chapter/290.png" alt=""><br><br>
-<img src="images/34_chapter/291.png" alt=""><br><br>
-<img src="images/34_chapter/292.png" alt=""><br><br>
-<img src="images/34_chapter/293.png" alt=""><br><br>
+  <div id="musicControls" aria-live="polite">
+    <button id="enableMusic">Enable music</button>
+    <span id="musicStatus">Locked (click Enable or tap the image)</span>
+  </div>
 
-<img id="triggerImage" src="images/34_chapter/294.png" alt="Click to play music" style="width:300px;cursor:pointer;">
-  <video id="audioVideo" src=“ROAM.mp4" style="display:none;"></video>
+  <div class="footer_2"><a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;">Home</span></a></div>
+  <div class="footer_3"><a href="chapter_35.html" target="_blank" aria-label="Next"><span style="font-size:1.5vw;">Next</span></a></div>
+  <div class="footer_4"><a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;">Back</span></a></div>
 
   <script>
+    // Elements
+    const audio = document.getElementById('bgAudio');
+    const enableBtn = document.getElementById('enableMusic');
+    const status = document.getElementById('musicStatus');
     const triggerImage = document.getElementById('triggerImage');
-    const audioVideo = document.getElementById('audioVideo');
-    
-    triggerImage.addEventListener('mouseenter', function() {
-      audioVideo.play();
+    const readingArea = document.getElementById('readingArea');
+
+    let unlocked = false;
+    let playing = false;
+    const dwellMs = 1500; // how long an element must stay visible to count as "reading"
+    let dwellTimer = null;
+
+    // Try to "unlock" playback using a clear user gesture (button)
+    enableBtn.addEventListener('click', async () => {
+      try {
+        await audio.play(); // will start or throw; we pause immediately to just unlock
+        audio.pause();
+        audio.currentTime = 0;
+        unlocked = true;
+        enableBtn.disabled = true;
+        status.textContent = 'Unlocked — music will play while you read';
+      } catch (err) {
+        console.warn('Unable to unlock audio via button:', err);
+        status.textContent = 'Unlock failed — try tapping the image';
+      }
     });
 
-    triggerImage.addEventListener('mouseleave', function() {
-      audioVideo.pause();
-      audioVideo.currentTime = 0;
+    // Tapping/clicking the trigger image toggles playback (also serves as unlock on first tap)
+    triggerImage.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (!unlocked) {
+        try {
+          await audio.play();
+          unlocked = true;
+          playing = true;
+          enableBtn.disabled = true;
+          status.textContent = 'Playing (unlocked by tap)';
+          return;
+        } catch (err) {
+          console.warn('Play failed on tap:', err);
+          status.textContent = 'Playback blocked — check browser settings';
+          return;
+        }
+      }
+
+      if (playing) {
+        audio.pause();
+        playing = false;
+        status.textContent = 'Paused';
+      } else {
+        try {
+          await audio.play();
+          playing = true;
+          status.textContent = 'Playing';
+        } catch (err) {
+          console.warn('Play failed:', err);
+          status.textContent = 'Playback blocked';
+        }
+      }
     });
 
-    // Optional: Prevent video controls from showing
-    audioVideo.controls = false;
+    // IntersectionObserver to detect when readingArea is visible
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          // start dwell timer
+          if (dwellTimer == null) {
+            dwellTimer = setTimeout(async () => {
+              dwellTimer = null;
+              if (unlocked) {
+                try {
+                  await audio.play();
+                  playing = true;
+                  status.textContent = 'Playing while you read';
+                } catch (err) {
+                  console.warn('Play failed inside observer:', err);
+                  status.textContent = 'Could not play audio — browser blocked autoplay';
+                }
+              } else {
+                // Not unlocked yet; prompt user to tap
+                status.textContent = 'Tap the image or click Enable to allow music';
+              }
+            }, dwellMs);
+          }
+        } else {
+          // left view: cancel pending dwell timer and possibly pause
+          if (dwellTimer != null) {
+            clearTimeout(dwellTimer);
+            dwellTimer = null;
+          }
+          // if nothing visible, pause after a short delay to avoid flicker
+          setTimeout(() => {
+            // verify still not visible
+            const rect = readingArea.getBoundingClientRect();
+            const winH = window.innerHeight || document.documentElement.clientHeight;
+            const visibleHeight = Math.max(0, Math.min(rect.bottom, winH) - Math.max(rect.top, 0));
+            const visibleRatio = (rect.height > 0) ? visibleHeight / rect.height : 0;
+            if (visibleRatio < 0.5 && playing) {
+              audio.pause();
+              playing = false;
+              status.textContent = 'Paused (no reading area visible)';
+            }
+          }, 700);
+        }
+      }
+    }, { threshold: [0.5] });
+
+    observer.observe(readingArea);
+
+    // Clean up on page unload
+    window.addEventListener('pagehide', () => {
+      if (!audio.paused) audio.pause();
+    });
   </script>
-
-
-<img src="images/34_chapter/295.png" alt=""><br><br>
-
-
-
-</div>
-
-
-
-</div>
-
-<br>
-<br>
-<br>
-<div class = "footer_2">
-<a href="index.html" target="_blank" alt="home" ><p class=""><span style="font-size:1.5vw;">Home</span></p></a>
-</div>
-
-<div class = "footer_3">
-<a href="chapter_35.html" target="_blank" alt="next" ><p class=""><span style="font-size:1.5vw;">Next</span></p></a>
-</div>
-
-<div class = "footer_4">
-<a href="chapter_33.html" target="_blank" alt="Back" ><p class=""><span style="font-size:1.5vw;">Back</span></p></a>
-</div>  
-
-
 </body>
 </html>
