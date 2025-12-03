@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <!--
-    index_responsive_desktop.html
-    Purpose: scale slide images and heading proportionally on laptop/desktop while
-             keeping mobile layout intact. Preserves Play control and ROAM.mp4 behavior.
+    index_responsive_desktop_shorter_gap.html
+    Purpose: same layout & behavior as the previous responsive file, but with a much smaller gap
+             between the chapter info (A Suburban Fairytale / Chapter 34 / Slides) and the first slide.
+    Change summary:
+    - Reduced vertical gap by removing large padding on the image container and using a controlled
+      responsive margin on the .fairytale block (clamped to behave well on mobile and desktop).
+    - Kept all playback behavior (Play button, img#img294 toggle, ROAM.mp4 handling).
   -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,16 +30,13 @@
       font-family: Lato, sans-serif;
     }
 
-    /* TITLE (ARMAGEDDON)
-       - Uses clamp() so font-size scales from a minimum up to a sensible maximum on large screens
-       - Maintains original fill/stroke/shadow appearance
-    */
+    /* TITLE (ARMAGEDDON) - responsive sizing with original stroke & shadows */
     .shadow {
       text-decoration: none;
-      color: black; /* original fill color */
-      -webkit-text-stroke: 2px red; /* red outline */
-      text-shadow: 4px 4px 4px #000000, 0 0 20px white; /* original dual shadow */
-      font-size: clamp(48px, 10vw, 140px); /* responsive scaling */
+      color: black;
+      -webkit-text-stroke: 2px red;
+      text-shadow: 4px 4px 4px #000000, 0 0 20px white;
+      font-size: clamp(48px, 10vw, 140px);
       font-family: Lato, sans-serif;
       margin: 0;
       text-align: center;
@@ -43,7 +44,7 @@
       display: inline-block;
     }
 
-    /* Header in normal flow, centered */
+    /* Header in normal flow */
     .header {
       width: 100%;
       padding: 36px 0 6px;
@@ -51,22 +52,25 @@
       box-sizing: border-box;
     }
 
-    /* FAIRYTALE (chapter info) directly under the title */
+    /* FAIRYTALE block (chapter info)
+       Key change: controlled margin-bottom to control gap to the slides.
+       Use clamp() so gap is roughly 1rem on small screens up to ~4rem on large screens.
+    */
     .fairytale {
-      margin: 0 auto 8px;
+      margin: 0 auto;
+      margin-bottom: clamp(1rem, 4vw, 4rem); /* ~4 lines on large screens, small gap on mobile */
       width: auto;
-      font-size: clamp(14px, 1.5vw, 20px); /* scale text on wide screens */
+      font-size: clamp(14px, 1.5vw, 20px);
       color: white;
       text-align: center;
       padding: 0 1rem;
     }
 
-    /* IMAGE AREA: adjust vertical spacing to keep header and fairytale clear */
+    /* IMAGE AREA: reduced top padding so slides sit directly below the chapter info */
     .image_container {
       display: block;
       text-align: center;
-      /* default mobile spacing (more push) */
-      padding-top: 48vh;
+      padding-top: 0.5rem; /* small default push; actual spacing primarily controlled by .fairytale margin */
       box-sizing: border-box;
     }
 
@@ -75,14 +79,12 @@
       width: 100%;
       margin: 0 auto;
       text-align: center;
+      max-width: 1400px;
     }
 
-    /* SLIDE SIZING:
-       - width uses clamp(min, preferred, max) so it grows smoothly from mobile to desktop
-       - height:auto preserves aspect ratio (proportional height)
-    */
+    /* SLIDE SIZING: responsive width with proportional height */
     .slide-image {
-      width: clamp(360px, 75vw, 1200px); /* min 360px, up to 1200px on large screens */
+      width: clamp(360px, 75vw, 1200px);
       height: auto;
       display: block;
       margin: 0 auto 1.5rem;
@@ -92,7 +94,7 @@
     #img294 { cursor: pointer; border: 2px solid transparent; transition: box-shadow .2s, border-color .2s; }
     #img294.playing { border-color: #4CAF50; box-shadow: 0 0 12px rgba(76,175,80,0.5); }
 
-    /* Play control below the 294 image (kept where you liked it) */
+    /* Play button area */
     .playControls { margin: 0.5rem auto 1.5rem; text-align: center; }
     .playControls button { font-size: 1rem; padding: .4rem .8rem; cursor: pointer; }
     #musicStatus { margin-left: .6rem; color: #ddd; vertical-align: middle; }
@@ -103,44 +105,32 @@
     .footer_3 { right: 0; width: 5%; height: 18%; }
     .footer_4 { left: 50%; transform: translateX(-50%); width: 5%; }
 
-    /* MEDIUM SCREENS (tablets / small laptops)
-       - Reduce top padding so images move upward (more room for larger title)
-       - Increase max width a bit by adjusting the clamp's middle (handled by clamp already)
-    */
+    /* Medium and large screens: slightly adjust top spacing to keep layout balanced */
     @media (min-width: 768px) {
-      .image_container { padding-top: 36vh; }
-      .fairytale { font-size: clamp(15px, 1.2vw, 20px); }
+      .image_container { padding-top: 0.75rem; }
     }
-
-    /* LARGE SCREENS (desktop / large laptops)
-       - Make top padding even smaller so slides sit higher under the heading
-       - clamp for .slide-image allows growth up to 1200px
-    */
     @media (min-width: 1200px) {
-      .image_container { padding-top: 22vh; }
+      .image_container { padding-top: 1rem; }
     }
-
-    /* Optionally, if you want an explicit maximum width on the page content: */
-    .flex-container { max-width: 1400px; margin-left: auto; margin-right: auto; }
   </style>
 </head>
 <body>
 
-  <!-- Header/title in normal flow -->
+  <!-- Header/title -->
   <div class="header">
     <a href="" target="_blank" aria-label="ARMAGEDDON title">
       <p class="shadow"><span style="font-size:inherit;">ARMAGEDDON</span></p>
     </a>
   </div>
 
-  <!-- Chapter info under title -->
+  <!-- Chapter info (now followed closely by slides) -->
   <div class="fairytale" role="region" aria-label="Chapter information">
     <p><span style="font-size:inherit;">A Suburban Fairytale</span></p>
     <p><span style="font-size:inherit;">Chapter 34 &nbsp; 'Roam'</span></p>
     <p><span style="font-size:inherit;">Slides: 287 - 295</span></p>
   </div>
 
-  <!-- Slides container (images scale proportionally) -->
+  <!-- Slides container (reduced gap below fairytale) -->
   <div class="image_container">
     <div class="flex-container">
       <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287"><br>
