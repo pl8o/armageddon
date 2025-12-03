@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    index_with_comments.html
+    Purpose: Restores your original header/title/fairytale display while keeping
+    the improved slide sizing and the Play-control that starts ROAM.mp4.
+
+    Notes:
+    - Keep ROAM.mp4 in the same folder as this HTML (or adjust the src below).
+    - All PNG slides are forced to the same displayed width with the .slide-image class.
+    - The Play button must be clicked (user gesture) to unlock playback on most browsers.
+    - This file includes comments to explain structure and behavior.
+  -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARMAGEDDON — Chapter 34</title>
 
+  <!-- Fonts and favicons (as in your original) -->
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -13,68 +25,197 @@
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
   <style>
-    body { background-color: black; margin:0; color:#fff; font-family: Lato, sans-serif; }
-    .header { position:absolute; top:5%; left:7%; width:80%; padding:30px; }
-    .title { margin:0; font-size:10vw; color:black; -webkit-text-stroke:2px red; text-shadow:0 0 20px white; text-align:center; }
-    .fairytale { position:absolute; top:49%; left:40%; transform:translate(-10%, -50%); font-size:1.5vw; text-align:center; color:white; }
-    .image_container { text-align:center; position:relative; padding-top: 40vh; } /* keep images below the header area */
-    .flex-container { display:block; width:100%; margin:0 auto; text-align:center; }
-    /* Make all PNG slides the same displayed width; responsive fallback on small screens */
-    .slide-image { width:700px; max-width:90vw; height:auto; display:block; margin:0 auto 1.5rem; }
-    /* Trigger image specific cursor */
-    #img294 { cursor:pointer; border: 2px solid transparent; }
-    #img294.playing { border-color: #4CAF50; box-shadow: 0 0 12px rgba(76,175,80,0.5); }
+    /* Body and basic layout */
+    body {
+      background-color: black;
+      margin: 0;
+      color: white;
+      font-family: Lato, sans-serif;
+    }
 
-    .footer_2, .footer_3, .footer_4 { position:fixed; bottom:0; background:transparent; text-align:center; }
-    .footer_2 { left:0; width:5%; height:18%; }
-    .footer_3 { right:0; width:5%; height:18%; }
-    .footer_4 { left:50%; transform:translateX(-50%); width:5%; }
-    a { text-decoration:none; color:black; -webkit-text-stroke:2px red; text-shadow:2px 2px 20px white; }
+    /* 
+      Re-created "shadow" title style from your original file.
+      Keep the large font and red stroke, with white glow.
+    */
+    .shadow {
+      text-decoration: none;
+      color: black;
+      -webkit-text-stroke: 2px red;      /* red outline like original */
+      text-shadow: 0 0 20px white;       /* white glow */
+      font-size: 10vw;                   /* large responsive size (as original) */
+      font-family: Lato, sans-serif;
+      margin: 0;
+      text-align: center;
+    }
 
-    /* Play button and status next to the 294 image */
-    .playControls { margin: 0.5rem auto 1.5rem; text-align:center; }
-    .playControls button { font-size:1rem; padding:.4rem .8rem; cursor:pointer; }
-    #musicStatus { margin-left:0.6rem; font-size:0.95rem; vertical-align:middle; color:#ddd; }
-    @media (max-width:760px) {
-      .slide-image { width:90vw; } /* smaller screens */
-      .fairytale { left:10%; top:52%; transform:none; }
+    /*
+      Header wrapper (keeps same top placement as original).
+      I preserved the positioning you originally used.
+    */
+    .header {
+      margin: auto;
+      width: 80%;
+      padding: 30px;
+      position: absolute;
+      top: 5%;
+      left: 7%;
+    }
+
+    /*
+      Fairytale (chapter) block:
+      - visually similar to your original
+      - corrected markup (no nested <p> inside <p>)
+      - small responsive font size using vw for similarity to original
+    */
+    .fairytale {
+      display: block;
+      background-color: black;
+      position: absolute;
+      top: 49%;
+      left: 40%;
+      width: auto;
+      font-size: 1.5vw;
+      color: white;
+      text-align: center;
+      margin: auto;
+    }
+
+    /* Container for the slides (keeps your layout simple) */
+    .image_container {
+      display: block;
+      text-align: center;
+      padding-top: 40vh; /* move images down below header as in previous layout */
+    }
+
+    .flex-container {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /*
+      Uniform slide sizing:
+      - force all slides to the same displayed width (responsive)
+      - adjust the 'width' value to change display size
+      - max-width ensures it fits on smaller screens
+    */
+    .slide-image {
+      width: 700px;      /* change this to whatever displayed width you want */
+      max-width: 90vw;   /* responsive cap for small screens */
+      height: auto;
+      display: block;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Specific 294 image ID for added visual state when playing */
+    #img294 {
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    #img294.playing {
+      border-color: #4CAF50;
+      box-shadow: 0 0 12px rgba(76,175,80,0.5);
+    }
+
+    /* Play button area (keeps same position below the 294 image) */
+    .playControls {
+      margin: 0.5rem auto 1.5rem;
+      text-align: center;
+    }
+    .playControls button {
+      font-size: 1rem;
+      padding: .4rem .8rem;
+      cursor: pointer;
+    }
+    #musicStatus {
+      margin-left: 0.6rem;
+      font-size: 0.95rem;
+      vertical-align: middle;
+      color: #ddd;
+    }
+
+    /* Footer links roughly as in your original file */
+    .footer_2, .footer_3, .footer_4 {
+      position: fixed;
+      bottom: 0;
+      background-color: transparent;
+      text-align: center;
+    }
+    .footer_2 { left: 0; width: 5%; height: 18%; }
+    .footer_3 { right: 0; width: 5%; height: 18%; }
+    .footer_4 { left: 50%; transform: translateX(-50%); width: 5%; }
+
+    /* small responsive adjustments */
+    @media (max-width: 760px) {
+      .slide-image { width: 90vw; }
+      .fairytale { left: 10%; top: 52%; transform: none; }
     }
   </style>
 </head>
 <body>
 
+  <!--
+    Re-created header block visually matching your original:
+    - anchor + p.shadow + span containing the title text.
+    - kept target and alt attributes as in original (alt on anchor is not strictly valid,
+      but I retained semantic alt where appropriate on images below).
+  -->
   <div class="header">
-    <a href="#" aria-label="Title"><p class="title">ARMAGEDDON</p></a>
+    <a href="" target="_blank" aria-label="ARMAGEDDON title">
+      <p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p>
+    </a>
   </div>
 
+  <!--
+    Fairytale / Chapter info
+    - I preserved the textual content: title line + chapter line + slides list.
+    - I corrected invalid nested <p> markup by using separate <p> elements and
+      small spans for font-size control.
+  -->
   <div class="fairytale" role="region" aria-label="Chapter information">
-    <div>A Suburban Fairytale</div>
-    <div>Chapter 34 — 'Roam' • Slides: 287–295</div>
+    <p><span style="font-size:1.5vw;">A Suburban Fairytale</span></p>
+    <p><span style="font-size:1.5vw;">Chapter 34 &nbsp; 'Roam'</span></p>
+    <p><span style="font-size:1.5vw;">Slides: 287 - 295</span></p>
   </div>
 
-  <div class="image_container" id="readingArea">
+  <!--
+    Main image container: all slide PNGs are shown here.
+    Each PNG uses class="slide-image" so they display at consistent sizes.
+  -->
+  <div class="image_container">
 
     <div class="flex-container">
-      <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287">
-      <img class="slide-image" src="images/34_chapter/288.png" alt="Slide 288">
-      <img class="slide-image" src="images/34_chapter/289.png" alt="Slide 289">
-      <img class="slide-image" src="images/34_chapter/290.png" alt="Slide 290">
-      <img class="slide-image" src="images/34_chapter/291.png" alt="Slide 291">
-      <img class="slide-image" src="images/34_chapter/292.png" alt="Slide 292">
-      <img class="slide-image" src="images/34_chapter/293.png" alt="Slide 293">
+      <!-- Slides 287–293 -->
+      <img class="slide-image" src="images/34_chapter/287.png" alt="Slide 287"><br>
+      <img class="slide-image" src="images/34_chapter/288.png" alt="Slide 288"><br>
+      <img class="slide-image" src="images/34_chapter/289.png" alt="Slide 289"><br>
+      <img class="slide-image" src="images/34_chapter/290.png" alt="Slide 290"><br>
+      <img class="slide-image" src="images/34_chapter/291.png" alt="Slide 291"><br>
+      <img class="slide-image" src="images/34_chapter/292.png" alt="Slide 292"><br>
+      <img class="slide-image" src="images/34_chapter/293.png" alt="Slide 293"><br>
 
-      <!-- 294: play control is associated with this image -->
-      <img id="img294" class="slide-image" src="images/34_chapter/294.png" alt="Slide 294 (tap to toggle)">
+      <!--
+        Slide 294: this is the special image that toggles playback.
+        - id="img294" so we can add a "playing" visual state.
+        - Clicking this image will attempt to toggle playback (works after user has unlocked).
+      -->
+      <img id="img294" class="slide-image" src="images/34_chapter/294.png" alt="Slide 294 (tap to toggle)"><br>
 
+      <!-- Play control: the button the browser sees as the user gesture to unlock audio.
+           This is placed directly below slide 294 (as you requested). -->
       <div class="playControls" aria-live="polite">
         <button id="playBtn" type="button">Play music for this chapter</button>
         <span id="musicStatus">Locked — click Play to allow audio</span>
       </div>
 
-      <img class="slide-image" src="images/34_chapter/295.png" alt="Slide 295">
+      <!-- Slide 295 -->
+      <img class="slide-image" src="images/34_chapter/295.png" alt="Slide 295"><br>
     </div>
   </div>
 
+  <!-- Footer navigation (keeps same targets you had) -->
   <div class="footer_2">
     <a href="index.html" target="_blank" aria-label="Home"><span style="font-size:1.5vw;color:#fff">Home</span></a>
   </div>
@@ -87,20 +228,35 @@
     <a href="chapter_33.html" target="_blank" aria-label="Back"><span style="font-size:1.5vw;color:#fff">Back</span></a>
   </div>
 
-  <!-- Hidden video used for audio playback (ROAM.mp4). This will play audio track only. -->
+  <!--
+    Hidden video element used to play ROAM.mp4 (audio track).
+    - Using <video> is fine for an mp4 file; if you have an audio-only file (mp3), you could
+      replace this with an <audio> element instead.
+    - playsinline helps mobile browsers avoid fullscreen behavior when playing video.
+    - preload="none" avoids loading until user interacts (saves bandwidth).
+  -->
   <video id="bgPlayer" src="ROAM.mp4" preload="none" loop style="display:none;" playsinline></video>
 
   <script>
+    /* 
+      JavaScript logic:
+      - Clicking the Play button issues the required gesture to call .play() and unlock audio.
+      - After playback is unlocked, clicking the 294 image toggles play/pause as well.
+      - All play() calls are awaited and errors caught to show helpful status text.
+    */
+
     (function () {
+      // DOM references
       const playBtn = document.getElementById('playBtn');
       const status = document.getElementById('musicStatus');
       const img294 = document.getElementById('img294');
       const player = document.getElementById('bgPlayer');
 
-      let unlocked = false;
-      let playing = false;
+      // State flags
+      let unlocked = false;   // whether a user gesture unlocked playback
+      let playing = false;    // whether video/audio is currently playing
 
-      // Helper to update UI
+      // UI updater: keep text and visual state consistent with current flags
       function updateUI() {
         if (!unlocked) {
           playBtn.textContent = 'Play music for this chapter';
@@ -117,31 +273,36 @@
         }
       }
 
-      // Try to play via a user gesture (the button). This satisfies autoplay policies.
+      // Click handler for the Play button:
+      // - Should be a direct user gesture so browsers allow audible playback.
       playBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         try {
-          // If not unlocked, calling play() inside click should allow playback
           if (!playing) {
+            // Attempt to play; awaiting ensures we catch promise rejections
             await player.play();
             unlocked = true;
             playing = true;
             updateUI();
           } else {
+            // Pause if currently playing
             player.pause();
+            // 'pause' event will update state/UI, but update here too for immediate feedback
             playing = false;
             updateUI();
           }
         } catch (err) {
-          // Play failed — show helpful message
+          // Most common cause: browser still blocking autoplay (rare when in a click handler),
+          // or file/codec/network problems.
           console.warn('Playback failed:', err);
           unlocked = false;
           playing = false;
-          status.textContent = 'Playback blocked — try clicking the image or check browser settings';
+          status.textContent = 'Playback blocked — try clicking the image or check the file path / codec';
         }
       });
 
-      // Allow clicking the 294 image to toggle playback once unlocked (or to attempt unlock)
+      // Click handler for slide 294:
+      // - This toggles playback (and will also act as the unlock gesture if needed).
       img294.addEventListener('click', async (ev) => {
         ev.preventDefault();
         try {
@@ -161,7 +322,7 @@
         }
       });
 
-      // Keep UI in sync with player events
+      // Keep UI in sync with player events (play/pause/ended)
       player.addEventListener('play', () => {
         unlocked = true;
         playing = true;
@@ -175,36 +336,37 @@
         playing = false;
         updateUI();
       });
+
+      // Media error handler (common reasons: wrong file path, unsupported codec, network 404)
       player.addEventListener('error', (e) => {
         console.error('Media error', player.error, e);
-        status.textContent = 'Media error: check ROAM.mp4 path / codec';
+        status.textContent = 'Media error: check ROAM.mp4 path and codec support (see console)';
       });
 
-      // Optional: unlock on any first user gesture across the document (unobtrusive)
-      // This will attempt a silent unlock (play/pause) the first time the user interacts anywhere.
+      // Optional unobtrusive one-time unlock:
+      // - try to perform a quick play/pause on the first pointerdown anywhere to register a gesture.
+      // - this is best-effort: if it fails we silently ignore and user can click the Play button.
       function oneTimeUnlock() {
         window.removeEventListener('pointerdown', oneTimeUnlock, {passive:true});
-        // try a fast play/pause to register the gesture (may fail silently)
         player.play().then(() => {
           player.pause();
           player.currentTime = 0;
           unlocked = true;
           updateUI();
         }).catch(() => {
-          // ignore; user can still use the explicit Play button
+          // ignore errors; explicit Play button remains the fallback
         });
       }
       window.addEventListener('pointerdown', oneTimeUnlock, {passive:true});
 
-      // initialize UI
-      updateUI();
-
-      // Accessibility: stop playback when navigating away
+      // Pause playback when the page is hidden/unloaded (polite behavior)
       window.addEventListener('pagehide', () => {
         if (!player.paused) player.pause();
       });
+
+      // Initialize UI on load
+      updateUI();
     })();
   </script>
-
 </body>
 </html>
