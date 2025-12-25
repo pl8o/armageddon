@@ -1,185 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- =========================
-     FAVICONS
-========================= -->
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
-
-<!-- =========================
-     GOOGLE FONT
-========================= -->
-<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 <style>
-
-/* =========================
-   BASE PAGE STYLING
-========================= */
-body {
-  margin: 0;
-  background: black;
-  font-family: Lato, sans-serif;
-  color: white;
-}
-
-/* =========================
-   TITLE / HEADER
-========================= */
-.header {
-  width: 100%;
-  text-align: center;
-  padding: 4vh 0 2vh 0;
+body{
+  background-color: black;
 }
 
 .shadow {
-  font-size: clamp(3rem, 10vw, 7rem);
-  margin: 0;
-  color: black;
-  -webkit-text-stroke: 2px red;
-  text-shadow: 0 0 20px white;
-}
-
-/* =========================
-   CHAPTER INFORMATION
-========================= */
-.fairytale {
-  text-align: center;
-  font-size: clamp(1rem, 2vw, 1.4rem);
-  margin-bottom: 3vh;
-}
-
-/* =========================
-   MAIN CONTENT CONTAINER
-========================= */
-.image_container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 1rem 6rem;
-  text-align: center;
-}
-
-/* =========================
-   IMAGES
-========================= */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 2.5rem auto;
-}
-
-/* =========================
-   VIDEO (RESPONSIVE)
-========================= */
-video {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  display: block;
-  margin: 3rem auto;
-  background: black;
-  border: 2px solid #444;
-}
-
-/* =========================
-   FOOTER NAVIGATION
-========================= */
-.footer {
-  position: fixed;
-  bottom: 1rem;
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
-}
-
-.footer.left { left: 1rem; }
-.footer.right { right: 1rem; }
-.footer.center {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* =========================
-   LINKS
-========================= */
-a {
-  color: white;
   text-decoration: none;
-  text-shadow: 0 0 10px white;
+  color:black;
+  text-shadow: 4px 4px 4px #000000;
+  font-size:10vw;
+  font-family: Lato, sans-serif;
+    margin: 0;
+    -webkit-text-stroke: 2px red;
+  text-shadow: 0 0 20px white;
+  text-align: center;
 }
 
-a:hover { color: yellow; }
+.header{
+  margin: auto;
+  width: 80%;
+  border-top: 1px solid black;
+  padding: 30px;
+  position:absolute;
+  top:5%;
+  left:7%
+
+}
+
+.fairytale> div {
+    background-color: black;
+    width: auto;
+    margin: auto;
+
+    text-align: center;
+    line-height: 75px;
+
+    position: relative;
+    font-family: Lato, sans-serif;
+
+}
+
+
+
+.fairytale{
+  display: block;
+  flex-wrap: nowrap;
+  background-color: black;
+  position:absolute;
+  top: 49%;
+  left:40%;
+    width: auto;
+  font-size: 20px;
+  font-family: Lato, sans-serif;
+  color:white;
+  text-align: center;
+border-top: 0;
+margin: auto;
+font-size:1.5vw;
+}
+
+.flex-container {
+  display: block;
+  flex-wrap: nowrap;
+  background-color: black;
+  position:absolute;
+  top: 75%;
+  width: 100%;
+  border-top: 0;
+
+}
+
+a{
+  text-decoration: none;
+  color:black;
+  text-shadow: 4px 4px 4px #000000;
+  font-size:3vw;
+  font-family: Lato, sans-serif;
+    margin: 0;
+    -webkit-text-stroke: 2px red;
+  text-shadow: 2px 2px 20px white;
+  text-align: center;
+}
+
+a:hover {
+  color: yellow;
+  background-color: transparent;
+
+}
+img{
+  width: auto ;
+ max-width: 100% ;
+ height: auto ;
+
+}
+.image_container{
+  display: block;
+  flex-wrap: nowrap;
+ text-align: center;
+
+}
+.footer_2 {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 5%;
+   height:18%;
+   background-color: transparent;
+   text-decoration: none;
+   text-align: center;
+
+}
+.footer_3 {
+   position: fixed;
+   right: 0;
+   bottom: 0;
+   width: 5%;
+   height:18%;
+   background-color: transparent;
+   text-decoration: none;
+   text-align: center;
+
+}
+
+.footer_4 {
+    position: fixed;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 5%;
+    bottom: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
 
 </style>
 </head>
 
 <body>
-
-<!-- =========================
-     HEADER / TITLE
-========================= -->
-<div class="header">
-  <p class="shadow">ARMAGEDDON</p>
+<div class= "header">
+<a href="" target="_blank" alt="" ><p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p></a>
 </div>
 
-<!-- =========================
-     CHAPTER INFO
-========================= -->
 <div class="fairytale">
-  <p>A Suburban Fairytale</p>
-  <p>Chapter 88 — “Milestones”</p>
-  <p>Slides: 884–903</p>
-</div>
-
-<!-- =========================
-     MAIN CONTENT
-========================= -->
-<div class="image_container">
-
-  <img src="images/88_chapter/884.png">
-  <img src="images/88_chapter/885.png">
-  <img src="images/88_chapter/886.png">
-  <img src="images/88_chapter/887.png">
-
-  <video controls preload="metadata">
-    <source src="Melanie.mp4" type="video/mp4">
-  </video>
-
-  <img src="images/88_chapter/888.png">
-
-  <video controls preload="metadata">
-    <source src="woodstock.mp4" type="video/mp4">
-  </video>
-
-  <img src="images/88_chapter/889.png">
-  <img src="images/88_chapter/890.png">
-  <img src="images/88_chapter/891.png">
-  <img src="images/88_chapter/892.png">
-  <img src="images/88_chapter/893.png">
-  <img src="images/88_chapter/894.png">
-  <img src="images/88_chapter/895.png">
-  <img src="images/88_chapter/896.png">
-  <img src="images/88_chapter/897.png">
-  <img src="images/88_chapter/898.png">
-  <img src="images/88_chapter/899.png">
-  <img src="images/88_chapter/900.png">
-  <img src="images/88_chapter/901.png">
-  <img src="images/88_chapter/902.png">
-  <img src="images/88_chapter/903.png">
+  <p><span style="font-size:1.5vw;">
+    A Suburban Fairytale
+  </span></p>
+  <p><span style="font-size:1.5vw;">
+           Chapter 86 'Bethel'            
+      <p>   Slides: 863 - 872        </p> 
+    </span></p>
 
 </div>
 
-<!-- =========================
-     FOOTER NAVIGATION
-========================= -->
-<div class="footer left"><a href="index.html">Home</a></div>
-<div class="footer center"><a href="chapter_87.html">Back</a></div>
-<div class="footer right"><a href="chapter_89.html">Next</a></div>
+
+<div class="image_container"><br>
+
+<div class="flex-container">
+
+<img src="images/86_chapter/863.png" alt=""><br><br>
+<img src="images/86_chapter/864.png" alt=""><br><br>
+<img src="images/86_chapter/865.png" alt=""><br><br>
+<img src="images/86_chapter/866.png" alt=""><br><br>
+<img src="images/86_chapter/867.png" alt=""><br><br>
+<img src="images/86_chapter/868.png" alt=""><br><br>
+<img src="images/86_chapter/869.png" alt=""><br><br> 
+<img src="images/86_chapter/870.png" alt=""><br><br>
+<img src="images/86_chapter/871.png" alt=""><br><br> 
+<img src="images/86_chapter/872.png" alt=""><br><br>
+
+
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<div class = "footer_2">
+<a href="index.html" target="_blank" alt="home" ><p class=""><span style="font-size:1.5vw;">Home</span></p></a>
+</div>
+
+<div class = "footer_3">
+<a href="chapter_87.html" target="_blank" alt="next" ><p class=""><span style="font-size:1.5vw;">Next</span></p></a>
+</div> 
+
+
+<div class = "footer_4">
+<a href="chapter_85.html" target="_blank" alt="Back" ><p class=""><span style="font-size:1.5vw;">Back</span></p></a>
+</div>  
+
 
 </body>
 </html>
+
+
 
 
