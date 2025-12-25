@@ -1,165 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<!-- =========================
+     FAVICONS
+========================= -->
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<!-- =========================
+     GOOGLE FONT
+========================= -->
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: black;
-      margin: 0;
-      font-family: Lato, sans-serif;
-      color: white;
-    }
+<style>
 
-    /* HEADER */
-    .header {
-      text-align: center;
-      margin-top: 2rem;
-    }
+/* =========================
+   BASE PAGE STYLING
+========================= */
+body {
+  margin: 0;
+  background: black;
+  font-family: Lato, sans-serif;
+  color: white;
+}
 
-    .shadow {
-      font-size: 10vw;
-      -webkit-text-stroke: 2px red;
-      text-shadow: 0 0 20px white;
-      margin: 0;
-    }
+/* =========================
+   TITLE / HEADER
+========================= */
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 4vh 0 2vh 0;
+}
 
-    /* CHAPTER TEXT */
-    .fairytale {
-      text-align: center;
-      margin: 2rem auto;
-      font-size: 1.5vw;
-    }
+.shadow {
+  font-size: clamp(3rem, 10vw, 7rem);
+  margin: 0;
+  color: black;
+  -webkit-text-stroke: 2px red;
+  text-shadow: 0 0 20px white;
+}
 
-    /* IMAGE + VIDEO CONTAINER */
-    .image_container {
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 1rem;
-    }
+/* =========================
+   CHAPTER INFORMATION
+========================= */
+.fairytale {
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  margin-bottom: 3vh;
+}
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 2rem auto;
-    }
+/* =========================
+   MAIN CONTENT CONTAINER
+========================= */
+.image_container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 1rem 6rem;
+  text-align: center;
+}
 
-    /* RESPONSIVE VIDEO */
-    video {
-      width: 100%;
-      max-width: 900px;
-      height: auto;
-      display: block;
-      margin: 2rem auto;
-      border: 2px solid #444;
-      background: black;
-    }
+/* =========================
+   IMAGES
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2.5rem auto;
+}
 
-    /* FOOTER NAV */
-    .footer {
-      position: fixed;
-      bottom: 1rem;
-      font-size: 1.2vw;
-    }
+/* =========================
+   VIDEO (RESPONSIVE)
+========================= */
+video {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 3rem auto;
+  background: black;
+  border: 2px solid #444;
+}
 
-    .footer.left { left: 1rem; }
-    .footer.right { right: 1rem; }
-    .footer.center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+/* =========================
+   FOOTER NAVIGATION
+========================= */
+.footer {
+  position: fixed;
+  bottom: 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
 
-    a {
-      color: white;
-      text-decoration: none;
-      text-shadow: 0 0 10px white;
-    }
+.footer.left { left: 1rem; }
+.footer.right { right: 1rem; }
+.footer.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    a:hover {
-      color: yellow;
-    }
+/* =========================
+   LINKS
+========================= */
+a {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 10px white;
+}
 
-    /* MOBILE TEXT SCALING */
-    @media (max-width: 768px) {
-      .shadow { font-size: 14vw; }
-      .fairytale { font-size: 4vw; }
-      .footer { font-size: 4vw; }
-    }
-  </style>
+a:hover { color: yellow; }
+
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
-    <p class="shadow">ARMAGEDDON</p>
-  </div>
+<!-- =========================
+     HEADER / TITLE
+========================= -->
+<div class="header">
+  <p class="shadow">ARMAGEDDON</p>
+</div>
 
-  <!-- CHAPTER INFO -->
-  <div class="fairytale">
-    <p>A Suburban Fairytale</p>
-    <p>Chapter 88 — “Milestones”</p>
-    <p>Slides: 884–903</p>
-  </div>
+<!-- =========================
+     CHAPTER INFO
+========================= -->
+<div class="fairytale">
+  <p>A Suburban Fairytale</p>
+  <p>Chapter 88 — “Milestones”</p>
+  <p>Slides: 884–903</p>
+</div>
 
-  <!-- MAIN CONTENT -->
-  <div class="image_container">
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<div class="image_container">
 
-    <img src="images/88_chapter/884.png" alt="">
-    <img src="images/88_chapter/885.png" alt="">
-    <img src="images/88_chapter/886.png" alt="">
-    <img src="images/88_chapter/887.png" alt="">
+  <img src="images/88_chapter/884.png">
+  <img src="images/88_chapter/885.png">
+  <img src="images/88_chapter/886.png">
+  <img src="images/88_chapter/887.png">
 
-    <!-- 🎬 VIDEO INSERTED HERE -->
-    <video controls preload="metadata">
-      <source src="Melanie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- 🎬 END VIDEO -->
+  <video controls preload="metadata">
+    <source src="Melanie.mp4" type="video/mp4">
+  </video>
 
-    <img src="images/88_chapter/888.png" alt="">
-    <img src="images/88_chapter/889.png" alt="">
-    <img src="images/88_chapter/890.png" alt="">
-    <img src="images/88_chapter/891.png" alt="">
-    <img src="images/88_chapter/892.png" alt="">
-    <img src="images/88_chapter/893.png" alt="">
-    <img src="images/88_chapter/894.png" alt="">
-    <img src="images/88_chapter/895.png" alt="">
-    <img src="images/88_chapter/896.png" alt="">
-    <img src="images/88_chapter/897.png" alt="">
-    <img src="images/88_chapter/898.png" alt="">
-    <img src="images/88_chapter/899.png" alt="">
-    <img src="images/88_chapter/900.png" alt="">
-    <img src="images/88_chapter/901.png" alt="">
-    <img src="images/88_chapter/902.png" alt="">
-    <img src="images/88_chapter/903.png" alt="">
+  <img src="images/88_chapter/888.png">
 
-  </div>
+  <video controls preload="metadata">
+    <source src="woodstock.mp4" type="video/mp4">
+  </video>
 
-  <!-- FOOTER NAVIGATION -->
-  <div class="footer left">
-    <a href="index.html">Home</a>
-  </div>
+  <img src="images/88_chapter/889.png">
 
-  <div class="footer right">
-    <a href="chapter_89.html">Next</a>
-  </div>
+  <!-- 🎬 NEW VIDEO INSERTED HERE -->
+  <video controls preload="metadata">
+    <source src="free.mp4" type="video/mp4">
+  </video>
 
-  <div class="footer center">
-    <a href="chapter_87.html">Back</a>
-  </div>
+  <img src="images/88_chapter/890.png">
+  <img src="images/88_chapter/891.png">
+  <img src="images/88_chapter/892.png">
+  <img src="images/88_chapter/893.png">
+  <img src="images/88_chapter/894.png">
+  <img src="images/88_chapter/895.png">
+  <img src="images/88_chapter/896.png">
+  <img src="images/88_chapter/897.png">
+  <img src="images/88_chapter/898.png">
+  <img src="images/88_chapter/899.png">
+  <img src="images/88_chapter/900.png">
+  <img src="images/88_chapter/901.png">
+  <img src="images/88_chapter/902.png">
+  <img src="images/88_chapter/903.png">
+
+</div>
+
+<!-- =========================
+     FOOTER NAVIGATION
+========================= -->
+<div class="footer left"><a href="index.html">Home</a></div>
+<div class="footer center"><a href="chapter_87.html">Back</a></div>
+<div class="footer right"><a href="chapter_89.html">Next</a></div>
 
 </body>
 </html>
+
 
 
