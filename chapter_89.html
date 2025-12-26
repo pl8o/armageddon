@@ -1,175 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<style>
+body{
+  background-color: black;
+}
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+.shadow {
+  text-decoration: none;
+  color:black;
+  text-shadow: 4px 4px 4px #000000;
+  font-size:10vw;
+  font-family: Lato, sans-serif;
+    margin: 0;
+    -webkit-text-stroke: 2px red;
+  text-shadow: 0 0 20px white;
+  text-align: center;
+}
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+.header{
+  margin: auto;
+  width: 80%;
+  border-top: 1px solid black;
+  padding: 30px;
+  position:absolute;
+  top:5%;
+  left:7%
 
-  <style>
-    body {
-      background-color: black;
-      margin: 0;
-      font-family: Lato, sans-serif;
-      color: white;
-    }
+}
 
-    /* HEADER */
-    .header {
-      text-align: center;
-      margin-top: 2rem;
-    }
+.fairytale> div {
+    background-color: black;
+    width: auto;
+    margin: auto;
 
-    .shadow {
-      font-size: 10vw;
-      -webkit-text-stroke: 2px red;
-      text-shadow: 0 0 20px white;
-      margin: 0;
-    }
+    text-align: center;
+    line-height: 75px;
 
-    /* CHAPTER TEXT */
-    .fairytale {
-      text-align: center;
-      margin: 2rem auto;
-      font-size: 1.5vw;
-    }
+    position: relative;
+    font-family: Lato, sans-serif;
 
-    /* MAIN CONTENT CONTAINER */
-    .image_container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem;
-      text-align: center;
-    }
+}
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 2rem auto;
-    }
 
-    /* RESPONSIVE VIDEO STYLE (APPLIES TO ALL VIDEOS) */
-    video {
-      width: 100%;
-      max-width: 900px;
-      height: auto;
-      display: block;
-      margin: 2.5rem auto;
-      background-color: black;
-      border: 2px solid #444;
-    }
 
-    /* FOOTER NAVIGATION */
-    .footer {
-      position: fixed;
-      bottom: 1rem;
-      font-size: 1.2vw;
-    }
+.fairytale{
+  display: block;
+  flex-wrap: nowrap;
+  background-color: black;
+  position:absolute;
+  top: 49%;
+  left:40%;
+    width: auto;
+  font-size: 20px;
+  font-family: Lato, sans-serif;
+  color:white;
+  text-align: center;
+border-top: 0;
+margin: auto;
+font-size:1.5vw;
+}
 
-    .footer.left { left: 1rem; }
-    .footer.right { right: 1rem; }
-    .footer.center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.flex-container {
+  display: block;
+  flex-wrap: nowrap;
+  background-color: black;
+  position:absolute;
+  top: 75%;
+  width: 100%;
+  border-top: 0;
 
-    a {
-      color: white;
-      text-decoration: none;
-      text-shadow: 0 0 10px white;
-    }
+}
 
-    a:hover {
-      color: yellow;
-    }
+a{
+  text-decoration: none;
+  color:black;
+  text-shadow: 4px 4px 4px #000000;
+  font-size:3vw;
+  font-family: Lato, sans-serif;
+    margin: 0;
+    -webkit-text-stroke: 2px red;
+  text-shadow: 2px 2px 20px white;
+  text-align: center;
+}
 
-    /* MOBILE ADJUSTMENTS */
-    @media (max-width: 768px) {
-      .shadow { font-size: 14vw; }
-      .fairytale { font-size: 4vw; }
-      .footer { font-size: 4vw; }
-    }
-  </style>
+a:hover {
+  color: yellow;
+  background-color: transparent;
+
+}
+img{
+  width: auto ;
+ max-width: 100% ;
+ height: auto ;
+
+}
+.image_container{
+  display: block;
+  flex-wrap: nowrap;
+ text-align: center;
+
+}
+.footer_2 {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 5%;
+   height:18%;
+   background-color: transparent;
+   text-decoration: none;
+   text-align: center;
+
+}
+.footer_3 {
+   position: fixed;
+   right: 0;
+   bottom: 0;
+   width: 5%;
+   height:18%;
+   background-color: transparent;
+   text-decoration: none;
+   text-align: center;
+
+}
+
+.footer_4 {
+    position: fixed;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 5%;
+    bottom: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+
+</style>
 </head>
 
 <body>
+<div class= "header">
+<a href="" target="_blank" alt="" ><p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p></a>
+</div>
 
-  <!-- HEADER -->
-  <div class="header">
-    <p class="shadow">ARMAGEDDON</p>
-  </div>
+<div class="fairytale">
+  <p><span style="font-size:1.5vw;">
+    A Suburban Fairytale
+  </span></p>
+  <p><span style="font-size:1.5vw;">
+           Chapter 89 'Art'            
+      <p>   Slides: 904 - 924        </p> 
+    </span></p>
 
-  <!-- CHAPTER INFO -->
-  <div class="fairytale">
-    <p>A Suburban Fairytale</p>
-    <p>Chapter 88 — “Milestones”</p>
-    <p>Slides: 884–903</p>
-  </div>
+</div>
 
-  <!-- MAIN SCROLL CONTENT -->
-  <div class="image_container">
 
-    <img src="images/88_chapter/884.png" alt="">
-    <img src="images/88_chapter/885.png" alt="">
-    <img src="images/88_chapter/886.png" alt="">
-    <img src="images/88_chapter/887.png" alt="">
+<div class="image_container"><br>
 
-    <!-- 🎬 VIDEO 1: MELANIE.MP4 -->
-    <!-- Inserted BETWEEN 887.png and 888.png -->
-    <video controls preload="metadata">
-      <source src="Melanie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- 🎬 END VIDEO 1 -->
+<div class="flex-container">
 
-    <img src="images/88_chapter/888.png" alt="">
+<img src="images/89_chapter/904.png" alt=""><br><br>
+<img src="images/89_chapter/905.png" alt=""><br><br>
+<img src="images/89_chapter/906.png" alt=""><br><br>
+<img src="images/89_chapter/907.png" alt=""><br><br>
+<img src="images/89_chapter/908.png" alt=""><br><br>
+<img src="images/89_chapter/909.png" alt=""><br><br>
+<img src="images/89_chapter/910.png" alt=""><br><br> 
+<img src="images/89_chapter/911.png" alt=""><br><br>
+<img src="images/89_chapter/912.png" alt=""><br><br> 
+<img src="images/89_chapter/913.png" alt=""><br><br>
+<img src="images/89_chapter/914.png" alt=""><br><br>
+<img src="images/89_chapter/915.png" alt=""><br><br>
+<img src="images/89_chapter/916.png" alt=""><br><br>
+<img src="images/89_chapter/917.png" alt=""><br><br>
+<img src="images/89_chapter/918.png" alt=""><br><br>
+<img src="images/89_chapter/919.png" alt=""><br><br>
+<img src="images/89_chapter/920.png" alt=""><br><br> 
+<img src="images/89_chapter/921.png" alt=""><br><br>
+<img src="images/89_chapter/922.png" alt=""><br><br> 
+<img src="images/89_chapter/923.png" alt=""><br><br>  
+<img src="images/89_chapter/924.png" alt=""><br><br>     
 
-    <!-- 🎬 VIDEO 2: WOODSTOCK.MP4 -->
-    <!-- Inserted BETWEEN 888.png and 889.png -->
-    <video controls preload="metadata">
-      <source src="woodstock.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- 🎬 END VIDEO 2 -->
+</div>
+</div>
 
-    <img src="images/88_chapter/889.png" alt="">
-    <img src="images/88_chapter/890.png" alt="">
-    <img src="images/88_chapter/891.png" alt="">
-    <img src="images/88_chapter/892.png" alt="">
-    <img src="images/88_chapter/893.png" alt="">
-    <img src="images/88_chapter/894.png" alt="">
-    <img src="images/88_chapter/895.png" alt="">
-    <img src="images/88_chapter/896.png" alt="">
-    <img src="images/88_chapter/897.png" alt="">
-    <img src="images/88_chapter/898.png" alt="">
-    <img src="images/88_chapter/899.png" alt="">
-    <img src="images/88_chapter/900.png" alt="">
-    <img src="images/88_chapter/901.png" alt="">
-    <img src="images/88_chapter/902.png" alt="">
-    <img src="images/88_chapter/903.png" alt="">
+<br>
+<br>
+<br>
+<div class = "footer_2">
+<a href="index.html" target="_blank" alt="home" ><p class=""><span style="font-size:1.5vw;">Home</span></p></a>
+</div>
 
-  </div>
+<div class = "footer_3">
+<a href="chapter_90.html" target="_blank" alt="next" ><p class=""><span style="font-size:1.5vw;">Next</span></p></a>
+</div> 
 
-  <!-- FOOTER NAVIGATION -->
-  <div class="footer left">
-    <a href="index.html">Home</a>
-  </div>
 
-  <div class="footer right">
-    <a href="chapter_89.html">Next</a>
-  </div>
+<div class = "footer_4">
+<a href="chapter_88.html" target="_blank" alt="Back" ><p class=""><span style="font-size:1.5vw;">Back</span></p></a>
+</div>  
 
-  <div class="footer center">
-    <a href="chapter_87.html">Back</a>
-  </div>
 
 </body>
 </html>
+
 
 
