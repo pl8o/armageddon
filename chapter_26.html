@@ -1,217 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
   <meta charset="UTF-8">
+  <!-- RESPONSIVE META (already present, kept) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+  <!-- FAVICONS (unchanged) -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+
+  <!-- GOOGLE FONTS (unchanged) -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
 <style>
+/* ==========================
+   GLOBAL STYLES
+   ========================== */
 body{
   background-color: black;
+  margin: 0;
+  padding: 0;
+  font-family: Lato, sans-serif;
 }
 
+/* ==========================
+   HEADER TITLE
+   ========================== */
 .shadow {
-  text-decoration: none;
   color:black;
-  text-shadow: 4px 4px 4px #000000;
   font-size:10vw;
-  font-family: Lato, sans-serif;
-    margin: 0;
-    -webkit-text-stroke: 2px red;
+  -webkit-text-stroke: 2px red;
   text-shadow: 0 0 20px white;
   text-align: center;
+  margin: 0;
 }
 
+/* CHANGED: Removed absolute positioning for better responsiveness */
 .header{
-  margin: auto;
-  width: 80%;
-  border-top: 1px solid black;
-  padding: 30px;
-  position:absolute;
-  top:5%;
-  left:7%
-
-}
-
-.fairytale> div {
-    background-color: black;
-    width: auto;
-    margin: auto;
-
-    text-align: center;
-    line-height: 75px;
-
-    position: relative;
-    font-family: Lato, sans-serif;
-
-}
-
-
-
-.fairytale{
-  display: block;
-  flex-wrap: nowrap;
-  background-color: black;
-  position:absolute;
-  top: 49%;
-  left:40%;
-    width: auto;
-  font-size: 20px;
-  font-family: Lato, sans-serif;
-  color:white;
-  text-align: center;
-border-top: 0;
-margin: auto;
-font-size:1.5vw;
-}
-
-
-.flex-container> div {
-    background-color: black;
-    width: 600px;
-    margin: 0px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 20px;
-    position: relative;
-    font-family: Lato, sans-serif;
-    display: block;
-    flex-wrap: nowrap;
-}
-.flex-container {
-  display: block;
-  flex-wrap: nowrap;
-  background-color: black;
-  position:absolute;
-  top: 75%;
-
   width: 100%;
-  border-top: 0;
-
+  padding: 30px 0;
+  text-align: center;
 }
 
+/* ==========================
+   CHAPTER TEXT
+   ========================== */
+.fairytale{
+  text-align: center;
+  color:white;
+  font-size:1.5vw;
+  margin-bottom: 40px;
+}
+
+/* Mobile font adjustment */
+@media (max-width: 768px) {
+  .fairytale {
+    font-size: 4vw;
+  }
+}
+
+/* ==========================
+   VIDEO CONTAINER (NEW)
+   ========================== */
+/* ADDED: Responsive video wrapper */
+.video-wrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+}
+
+/* ADDED: Video styling */
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  border: 2px solid red;
+  box-shadow: 0 0 20px white;
+}
+
+/* ==========================
+   IMAGE SECTION
+   ========================== */
+.image_container{
+  text-align: center;
+}
+
+/* CHANGED: Removed absolute positioning */
+.flex-container {
+  width: 100%;
+}
+
+/* Responsive images */
+img{
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+/* ==========================
+   FOOTER NAVIGATION
+   ========================== */
+.footer_2,
+.footer_3,
+.footer_4 {
+  position: fixed;
+  bottom: 0;
+  width: 5%;
+  text-align: center;
+}
+
+.footer_2 { left: 0; }
+.footer_3 { right: 0; }
+.footer_4 { left: 47.5%; }
+
+/* Footer links */
 a{
   text-decoration: none;
   color:black;
-  text-shadow: 4px 4px 4px #000000;
-  font-size:3vw;
-  font-family: Lato, sans-serif;
-    margin: 0;
-    -webkit-text-stroke: 2px red;
+  font-size:1.5vw;
+  -webkit-text-stroke: 1px red;
   text-shadow: 2px 2px 20px white;
-  text-align: center;
 }
 
 a:hover {
   color: yellow;
-  background-color: transparent;
-
-}
-img{
-  width: auto ;
- max-width: 100% ;
- height: auto ;
-
-}
-.image_container{
-  display: block;
-  flex-wrap: nowrap;
- text-align: center;
-
-}
-
-.footer_2 {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 5%;
-   height:18%;
-   background-color: transparent;
-   text-decoration: none;
-   text-align: center;
-
-}
-.footer_3 {
-   position: fixed;
-   right: 0;
-   bottom: 0;
-   width: 5%;
-   height:18%;
-   background-color: transparent;
-   text-decoration: none;
-   text-align: center;
-
-}
-
-.footer_4 {
-    position: fixed;
-    margin-left: 50%;
-    margin-right: 50%;
-    width: 5%;
-    bottom: 0;
-    background-color: transparent;
-    text-align: center;
 }
 </style>
 </head>
 
 <body>
-<div class= "header">
-<a href="" target="_blank" alt="" ><p class="shadow"><span style="font-size:10vw;">ARMAGEDDON</span></p></a>
+
+<!-- ==========================
+     HEADER
+     ========================== -->
+<div class="header">
+  <a href="#">
+    <p class="shadow">ARMAGEDDON</p>
+  </a>
 </div>
 
+<!-- ==========================
+     CHAPTER INFO
+     ========================== -->
 <div class="fairytale">
-  <p><span style="font-size:1.5vw;">
-    A Suburban Fairytale
-  </span></p>
- <p><span style="font-size:1.5vw;">
-     Chapter 26   'Shiny Happy People'  
-      <p>  Slides: 222-231  </p> 
-    </span></p>
-
+  <p>A Suburban Fairytale</p>
+  <p>
+    Chapter 26 — <em>'Shiny Happy People'</em><br>
+    Slides: 222–231
+  </p>
 </div>
 
-
-<div class="image_container"><br>
-
-<div class="flex-container">
-
-<img src="images/26_chapter/222.png" alt=""><br><br>
-<img src="images/26_chapter/223.png" alt=""><br><br>
-<img src="images/26_chapter/224.png" alt=""><br><br>
-<img src="images/26_chapter/225.png" alt=""><br><br>
-<img src="images/26_chapter/226.png" alt=""><br><br>
-<img src="images/26_chapter/227.png" alt=""><br><br>
-<img src="images/26_chapter/228.png" alt=""><br><br>
-<img src="images/26_chapter/229.png" alt=""><br><br>
-<img src="images/26_chapter/230.png" alt=""><br><br>
-<img src="images/26_chapter/231.png" alt=""><br><br>
+<!-- ==========================
+     VIDEO INSERT (NEW)
+     Appears BEFORE first image
+     ========================== -->
+<div class="video-wrapper">
+  <!-- ADDED: Responsive HTML5 video -->
+  <video controls preload="metadata">
+    <source src="rem.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
-
-
+<!-- ==========================
+     IMAGES
+     ========================== -->
+<div class="image_container">
+  <div class="flex-container">
+    <img src="images/26_chapter/222.png" alt="">
+    <img src="images/26_chapter/223.png" alt="">
+    <img src="images/26_chapter/224.png" alt="">
+    <img src="images/26_chapter/225.png" alt="">
+    <img src="images/26_chapter/226.png" alt="">
+    <img src="images/26_chapter/227.png" alt="">
+    <img src="images/26_chapter/228.png" alt="">
+    <img src="images/26_chapter/229.png" alt="">
+    <img src="images/26_chapter/230.png" alt="">
+    <img src="images/26_chapter/231.png" alt="">
+  </div>
 </div>
 
-<br>
-<br>
-<br>
-<div class = "footer_2">
-<a href="index.html" target="_blank" alt="home" ><p class=""><span style="font-size:1.5vw;">Home</span></p></a>
+<!-- ==========================
+     FOOTER NAVIGATION
+     ========================== -->
+<div class="footer_2">
+  <a href="index.html">Home</a>
 </div>
 
-<div class = "footer_3">
-<a href="chapter_27.html" target="_blank" alt="next" ><p class=""><span style="font-size:1.5vw;">Next</span></p></a>
+<div class="footer_3">
+  <a href="chapter_27.html">Next</a>
 </div>
 
-<div class = "footer_4">
-<a href="chapter_25.html" target="_blank" alt="Back" ><p class=""><span style="font-size:1.5vw;">Back</span></p></a>
-</div>  
-
+<div class="footer_4">
+  <a href="chapter_25.html">Back</a>
+</div>
 
 </body>
 </html>
+
